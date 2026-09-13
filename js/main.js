@@ -43,18 +43,41 @@ document.addEventListener('DOMContentLoaded', () => {
 function initNeuralCanvas() {
   const canvas = document.getElementById('neuralCanvas');
   if (!canvas) return;
-  const ctx = canvas.getContext('2d');
+  const ctx = canvas.getContext('2d', { alpha: true });
   if (!ctx) return;
 
   let width = canvas.width = window.innerWidth;
   let height = canvas.height = window.innerHeight;
+  let isScrolling = false;
+  let scrollTimeout = null;
+  let isTabHidden = false;
+  let rafId = null;
 
   window.addEventListener('resize', () => {
     width = canvas.width = window.innerWidth;
     height = canvas.height = window.innerHeight;
+  }, { passive: true });
+
+  // Pause canvas rendering during active scroll so user gets buttery 60-120fps scrolling
+  window.addEventListener('scroll', () => {
+    isScrolling = true;
+    clearTimeout(scrollTimeout);
+    scrollTimeout = setTimeout(() => {
+      isScrolling = false;
+      if (!rafId && !isTabHidden) {
+        rafId = requestAnimationFrame(render);
+      }
+    }, 70);
+  }, { passive: true });
+
+  document.addEventListener('visibilitychange', () => {
+    isTabHidden = document.hidden;
+    if (!isTabHidden && !rafId) {
+      rafId = requestAnimationFrame(render);
+    }
   });
 
-  const mouse = { x: -1000, y: -1000, radius: 170 };
+  const mouse = { x: -1000, y: -1000, radiusSq: 160 * 160 };
   window.addEventListener('mousemove', (e) => {
     mouse.x = e.clientX;
     mouse.y = e.clientY;
@@ -65,34 +88,43 @@ function initNeuralCanvas() {
     mouse.y = -1000;
   });
 
-  // Shockwave ripples on click
+  // Shockwave ripples on click (capped at 2 max)
   const shockwaves = [];
   window.addEventListener('click', (e) => {
-    shockwaves.push({
-      x: e.clientX,
-      y: e.clientY,
-      radius: 4,
-      maxRadius: 180,
-      opacity: 0.85,
-      speed: 6.5
-    });
+    if (shockwaves.length < 2) {
+      shockwaves.push({
+        x: e.clientX,
+        y: e.clientY,
+        radius: 4,
+        maxRadius: 160,
+        opacity: 0.8,
+        speed: 7
+      });
+    }
   });
 
-  const particleCount = Math.min(Math.floor((width * height) / 17000), 80);
+  // Optimal particle count: 32 on desktop, 16 on mobile for silky 60+ FPS
+  const particleCount = width < 768 ? 16 : 32;
   const particles = [];
 
   for (let i = 0; i < particleCount; i++) {
     particles.push({
       x: Math.random() * width,
       y: Math.random() * height,
-      vx: (Math.random() - 0.5) * 0.7,
-      vy: (Math.random() - 0.5) * 0.7,
-      radius: Math.random() * 1.8 + 1.2,
-      baseAlpha: Math.random() * 0.4 + 0.3
+      vx: (Math.random() - 0.5) * 0.55,
+      vy: (Math.random() - 0.5) * 0.55,
+      radius: Math.random() * 1.5 + 1.2,
+      baseAlpha: Math.random() * 0.35 + 0.25
     });
   }
 
+  const maxDist = 115;
+  const maxDistSq = maxDist * maxDist;
+
   function render() {
+    rafId = null;
+    if (isTabHidden || isScrolling) return;
+
     ctx.clearRect(0, 0, width, height);
 
     // Update and draw shockwaves
@@ -103,16 +135,16 @@ function initNeuralCanvas() {
 
       ctx.beginPath();
       ctx.arc(sw.x, sw.y, sw.radius, 0, Math.PI * 2);
-      ctx.strokeStyle = `rgba(0, 240, 255, ${sw.opacity})`;
-      ctx.lineWidth = 1.8;
+      ctx.strokeStyle = `rgba(0, 240, 255, ${sw.opacity.toFixed(2)})`;
+      ctx.lineWidth = 1.5;
       ctx.stroke();
 
-      if (sw.opacity < 0.02 || sw.radius > sw.maxRadius) {
+      if (sw.opacity < 0.03 || sw.radius > sw.maxRadius) {
         shockwaves.splice(s, 1);
       }
     }
 
-    // Update particles
+    // Update particle physics
     for (let i = 0; i < particles.length; i++) {
       const p = particles[i];
       p.x += p.vx;
@@ -121,60 +153,58 @@ function initNeuralCanvas() {
       if (p.x < 0 || p.x > width) p.vx *= -1;
       if (p.y < 0 || p.y > height) p.vy *= -1;
 
-      // Mouse repulsion
-      const dx = mouse.x - p.x;
-      const dy = mouse.y - p.y;
-      const dist = Math.hypot(dx, dy);
-      if (dist < mouse.radius && dist > 0) {
-        const force = (mouse.radius - dist) / mouse.radius;
-        p.x -= (dx / dist) * force * 2.8;
-        p.y -= (dy / dist) * force * 2.8;
-      }
-
-      // Draw particle node
-      ctx.beginPath();
-      ctx.arc(p.x, p.y, p.radius, 0, Math.PI * 2);
-      ctx.fillStyle = `rgba(0, 240, 255, ${p.baseAlpha})`;
-      ctx.shadowColor = '#00f0ff';
-      ctx.shadowBlur = 6;
-      ctx.fill();
-      ctx.shadowBlur = 0;
-
-      // Draw proximity lines between particles
-      for (let j = i + 1; j < particles.length; j++) {
-        const p2 = particles[j];
-        const dist2 = Math.hypot(p.x - p2.x, p.y - p2.y);
-        if (dist2 < 125) {
-          const alpha = (1 - dist2 / 125) * 0.22;
-          ctx.beginPath();
-          ctx.moveTo(p.x, p.y);
-          ctx.lineTo(p2.x, p2.y);
-          ctx.strokeStyle = `rgba(0, 240, 255, ${alpha})`;
-          ctx.lineWidth = 0.75;
-          ctx.stroke();
+      // Mouse repulsion (squared distance)
+      if (mouse.x > 0) {
+        const dx = mouse.x - p.x;
+        const dy = mouse.y - p.y;
+        const distSq = dx * dx + dy * dy;
+        if (distSq < mouse.radiusSq && distSq > 0) {
+          const dist = Math.sqrt(distSq);
+          const force = (160 - dist) / 160;
+          p.x -= (dx / dist) * force * 2.5;
+          p.y -= (dy / dist) * force * 2.5;
         }
-      }
-
-      // Draw line to mouse
-      if (dist < mouse.radius) {
-        const alpha = (1 - dist / mouse.radius) * 0.45;
-        ctx.beginPath();
-        ctx.moveTo(p.x, p.y);
-        ctx.lineTo(mouse.x, mouse.y);
-        ctx.strokeStyle = `rgba(0, 255, 157, ${alpha})`;
-        ctx.lineWidth = 1;
-        ctx.stroke();
       }
     }
 
-    requestAnimationFrame(render);
+    // BATCH DRAW ALL PROXIMITY LINES IN A SINGLE GPU CALL
+    ctx.beginPath();
+    ctx.strokeStyle = 'rgba(0, 240, 255, 0.12)';
+    ctx.lineWidth = 0.75;
+
+    for (let i = 0; i < particles.length; i++) {
+      const p = particles[i];
+      for (let j = i + 1; j < particles.length; j++) {
+        const p2 = particles[j];
+        const dx = p.x - p2.x;
+        const dy = p.y - p2.y;
+        const distSq = dx * dx + dy * dy;
+        if (distSq < maxDistSq) {
+          ctx.moveTo(p.x, p.y);
+          ctx.lineTo(p2.x, p2.y);
+        }
+      }
+    }
+    ctx.stroke();
+
+    // BATCH DRAW ALL PARTICLES IN A SINGLE GPU CALL (Zero shadowBlur overhead!)
+    ctx.fillStyle = 'rgba(0, 240, 255, 0.55)';
+    ctx.beginPath();
+    for (let i = 0; i < particles.length; i++) {
+      const p = particles[i];
+      ctx.moveTo(p.x + p.radius, p.y);
+      ctx.arc(p.x, p.y, p.radius, 0, Math.PI * 2);
+    }
+    ctx.fill();
+
+    rafId = requestAnimationFrame(render);
   }
 
-  render();
+  rafId = requestAnimationFrame(render);
 }
 
 /* ==========================================================================
-   2. CUSTOM DUAL MAGNETIC CYBER CURSOR
+   2. CUSTOM DUAL MAGNETIC CYBER CURSOR (GPU Accelerated & Sleep-Capable)
    ========================================================================== */
 function initMagneticCursor() {
   const dot = document.getElementById('cursorDot');
@@ -183,43 +213,67 @@ function initMagneticCursor() {
 
   if (window.matchMedia('(pointer: coarse)').matches) return;
 
-  let mouseX = window.innerWidth / 2;
-  let mouseY = window.innerHeight / 2;
-  let ringX = mouseX;
-  let ringY = mouseY;
+  let mouseX = -100;
+  let mouseY = -100;
+  let ringX = -100;
+  let ringY = -100;
   let isVisible = false;
+  let rafId = null;
 
   window.addEventListener('mousemove', (e) => {
     mouseX = e.clientX;
     mouseY = e.clientY;
+
     if (!isVisible) {
       dot.style.opacity = '1';
       ring.style.opacity = '1';
+      ringX = mouseX;
+      ringY = mouseY;
       isVisible = true;
     }
-    dot.style.transform = `translate(${mouseX}px, ${mouseY}px) translate(-50%, -50%)`;
+
+    dot.style.transform = `translate3d(${mouseX}px, ${mouseY}px, 0) translate(-50%, -50%)`;
+
+    if (!rafId) {
+      rafId = requestAnimationFrame(renderRing);
+    }
   }, { passive: true });
 
   window.addEventListener('mouseleave', () => {
     dot.style.opacity = '0';
     ring.style.opacity = '0';
     isVisible = false;
+    if (rafId) {
+      cancelAnimationFrame(rafId);
+      rafId = null;
+    }
   });
 
   function renderRing() {
-    ringX += (mouseX - ringX) * 0.18;
-    ringY += (mouseY - ringY) * 0.18;
-    ring.style.transform = `translate(${ringX}px, ${ringY}px) translate(-50%, -50%)`;
-    requestAnimationFrame(renderRing);
-  }
-  requestAnimationFrame(renderRing);
+    ringX += (mouseX - ringX) * 0.22;
+    ringY += (mouseY - ringY) * 0.22;
+    ring.style.transform = `translate3d(${ringX.toFixed(1)}px, ${ringY.toFixed(1)}px, 0) translate(-50%, -50%)`;
 
-  // Interactive target triggers
-  const interactiveTargets = document.querySelectorAll('a, button, input, textarea, .tilt-element, .tech-card-vertical, .hero-tech-card');
-  interactiveTargets.forEach((el) => {
-    el.addEventListener('mouseenter', () => ring.classList.add('cursor-active'));
-    el.addEventListener('mouseleave', () => ring.classList.remove('cursor-active'));
-  });
+    // Only continue loop if ring is still catching up (Sleeps when idle!)
+    if (Math.abs(mouseX - ringX) > 0.3 || Math.abs(mouseY - ringY) > 0.3) {
+      rafId = requestAnimationFrame(renderRing);
+    } else {
+      rafId = null;
+    }
+  }
+
+  // Efficient event delegation
+  document.addEventListener('mouseover', (e) => {
+    if (e.target.closest('a, button, input, textarea, .tilt-element, .tech-card-vertical, .hero-tech-card, .diag-node, .diag-sub-card, .dsa-tab-btn')) {
+      ring.classList.add('cursor-active');
+    }
+  }, { passive: true });
+
+  document.addEventListener('mouseout', (e) => {
+    if (e.target.closest('a, button, input, textarea, .tilt-element, .tech-card-vertical, .hero-tech-card, .diag-node, .diag-sub-card, .dsa-tab-btn')) {
+      ring.classList.remove('cursor-active');
+    }
+  }, { passive: true });
 }
 
 /* ==========================================================================
@@ -520,7 +574,7 @@ function initFpsMeter() {
 }
 
 /* ==========================================================================
-   7. AMBIENT MOUSE SPOTLIGHT
+   7. AMBIENT MOUSE SPOTLIGHT (Sleep-Capable & GPU Accelerated)
    ========================================================================== */
 function initMouseSpotlight() {
   const spotlight = document.getElementById('mouseSpotlight');
@@ -530,24 +584,32 @@ function initMouseSpotlight() {
   let mouseY = window.innerHeight / 2;
   let currentX = mouseX;
   let currentY = mouseY;
+  let rafId = null;
 
   window.addEventListener('mousemove', (e) => {
     mouseX = e.clientX;
     mouseY = e.clientY;
+    if (!rafId) {
+      rafId = requestAnimationFrame(renderSpotlight);
+    }
   }, { passive: true });
 
   function renderSpotlight() {
-    currentX += (mouseX - currentX) * 0.12;
-    currentY += (mouseY - currentY) * 0.12;
-    spotlight.style.transform = `translate(${currentX}px, ${currentY}px) translate(-50%, -50%)`;
-    requestAnimationFrame(renderSpotlight);
-  }
+    currentX += (mouseX - currentX) * 0.15;
+    currentY += (mouseY - currentY) * 0.15;
+    spotlight.style.transform = `translate3d(${currentX.toFixed(1)}px, ${currentY.toFixed(1)}px, 0) translate(-50%, -50%)`;
 
-  requestAnimationFrame(renderSpotlight);
+    // Sleep when close to target
+    if (Math.abs(mouseX - currentX) > 0.5 || Math.abs(mouseY - currentY) > 0.5) {
+      rafId = requestAnimationFrame(renderSpotlight);
+    } else {
+      rafId = null;
+    }
+  }
 }
 
 /* ==========================================================================
-   8. 3D PERSPECTIVE CARD TILT
+   8. 3D PERSPECTIVE CARD TILT (Cached Rect & RAF Throttled)
    ========================================================================== */
 function init3DTilt() {
   const tiltElements = document.querySelectorAll('.tilt-element');
@@ -556,28 +618,38 @@ function init3DTilt() {
   if (window.matchMedia('(pointer: coarse)').matches) return;
 
   tiltElements.forEach((el) => {
-    const maxTilt = 7.5;
+    let rect = null;
+    let rafId = null;
+
+    el.addEventListener('mouseenter', () => {
+      rect = el.getBoundingClientRect();
+    }, { passive: true });
 
     el.addEventListener('mousemove', (e) => {
-      const rect = el.getBoundingClientRect();
-      const x = e.clientX - rect.left;
-      const y = e.clientY - rect.top;
+      if (!rect) rect = el.getBoundingClientRect();
+      if (rafId) cancelAnimationFrame(rafId);
 
-      const centerX = rect.width / 2;
-      const centerY = rect.height / 2;
+      rafId = requestAnimationFrame(() => {
+        const x = e.clientX - rect.left;
+        const y = e.clientY - rect.top;
+        const centerX = rect.width / 2;
+        const centerY = rect.height / 2;
 
-      const normX = (x - centerX) / centerX;
-      const normY = (y - centerY) / centerY;
+        const normX = (x - centerX) / centerX;
+        const normY = (y - centerY) / centerY;
 
-      const rotX = -(normY * maxTilt).toFixed(2);
-      const rotY = (normX * maxTilt).toFixed(2);
+        const rotX = -(normY * 5.5).toFixed(1);
+        const rotY = (normX * 5.5).toFixed(1);
 
-      el.style.transform = `perspective(1000px) rotateX(${rotX}deg) rotateY(${rotY}deg) translateY(-4px)`;
-    });
+        el.style.transform = `perspective(1000px) rotateX(${rotX}deg) rotateY(${rotY}deg) translateY(-3px)`;
+      });
+    }, { passive: true });
 
     el.addEventListener('mouseleave', () => {
-      el.style.transform = 'perspective(1000px) rotateX(0deg) rotateY(0deg) translateY(0px)';
-    });
+      if (rafId) cancelAnimationFrame(rafId);
+      rect = null;
+      el.style.transform = '';
+    }, { passive: true });
   });
 }
 
@@ -790,17 +862,34 @@ function showToast(message) {
 }
 
 /* ==========================================================================
-   12. HEADER SCROLL & BACK TO TOP
+   12. UNIFIED SCROLL ENGINE & OBSERVER (Zero Layout Thrashing)
    ========================================================================== */
 function initHeaderScroll() {
   const header = document.getElementById('siteHeader');
-  if (!header) return;
+  const btn = document.getElementById('backToTopBtn');
+  let ticking = false;
 
   window.addEventListener('scroll', () => {
-    if (window.scrollY > 40) {
-      header.classList.add('scrolled');
-    } else {
-      header.classList.remove('scrolled');
+    if (!ticking) {
+      requestAnimationFrame(() => {
+        const scrollY = window.scrollY;
+        if (header) {
+          if (scrollY > 40) {
+            header.classList.add('scrolled');
+          } else {
+            header.classList.remove('scrolled');
+          }
+        }
+        if (btn) {
+          if (scrollY > 500) {
+            btn.classList.add('visible');
+          } else {
+            btn.classList.remove('visible');
+          }
+        }
+        ticking = false;
+      });
+      ticking = true;
     }
   }, { passive: true });
 }
@@ -808,46 +897,31 @@ function initHeaderScroll() {
 function initBackToTop() {
   const btn = document.getElementById('backToTopBtn');
   if (!btn) return;
-
-  window.addEventListener('scroll', () => {
-    if (window.scrollY > 500) {
-      btn.classList.add('visible');
-    } else {
-      btn.classList.remove('visible');
-    }
-  }, { passive: true });
-
   btn.addEventListener('click', () => {
     window.scrollTo({ top: 0, behavior: 'smooth' });
   });
 }
 
-/* ==========================================================================
-   13. SCROLL SPY NAVIGATION
-   ========================================================================== */
 function initScrollSpy() {
   const sections = document.querySelectorAll('section[id]');
   const navLinks = document.querySelectorAll('.nav-link');
   if (sections.length === 0 || navLinks.length === 0) return;
 
-  window.addEventListener('scroll', () => {
-    let currentId = '';
-    const scrollPos = window.scrollY + 200;
-
-    sections.forEach((sec) => {
-      const top = sec.offsetTop;
-      const height = sec.offsetHeight;
-      if (scrollPos >= top && scrollPos < top + height) {
-        currentId = sec.getAttribute('id');
+  const observer = new IntersectionObserver((entries) => {
+    entries.forEach((entry) => {
+      if (entry.isIntersecting) {
+        const id = entry.target.getAttribute('id');
+        navLinks.forEach((link) => {
+          link.classList.toggle('active', link.dataset.nav === id);
+        });
       }
     });
+  }, {
+    rootMargin: '-20% 0px -60% 0px',
+    threshold: 0
+  });
 
-    if (currentId) {
-      navLinks.forEach((link) => {
-        link.classList.toggle('active', link.dataset.nav === currentId);
-      });
-    }
-  }, { passive: true });
+  sections.forEach((sec) => observer.observe(sec));
 }
 
 /* ==========================================================================
