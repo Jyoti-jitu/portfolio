@@ -999,41 +999,114 @@ function initProjectModal() {
 
 
 /* ==========================================================================
-   15. CONTACT FORM
+   15. CONTACT FORM (Web3Forms AJAX with Mail Client Relay Fallback)
    ========================================================================== */
 function initContactForm() {
   const form = document.getElementById('contactForm');
   const alertBox = document.getElementById('contactAlert');
   if (!form) return;
 
-  form.addEventListener('submit', (e) => {
+  const submitBtn = form.querySelector('button[type="submit"]');
+
+  form.addEventListener('submit', async (e) => {
     e.preventDefault();
 
-    const name = form.querySelector('#contactName')?.value.trim();
-    const email = form.querySelector('#contactEmail')?.value.trim();
-    const message = form.querySelector('#contactMessage')?.value.trim();
+    const nameInput = form.querySelector('#contactName');
+    const emailInput = form.querySelector('#contactEmail');
+    const msgInput = form.querySelector('#contactMessage');
+
+    const name = nameInput ? nameInput.value.trim() : '';
+    const email = emailInput ? emailInput.value.trim() : '';
+    const message = msgInput ? msgInput.value.trim() : '';
 
     if (!name || !email || !message) {
       if (alertBox) {
-        alertBox.textContent = 'Please populate all fields before dispatching transmission.';
+        alertBox.textContent = 'SYSTEM NOTICE: Please complete all transmission fields before dispatching.';
         alertBox.className = 'contact-form-alert error';
         alertBox.style.display = 'block';
       }
       return;
     }
 
-    // Compose mailto
-    const subject = encodeURIComponent(`Portfolio Inquiry from ${name}`);
-    const body = encodeURIComponent(`Sender: ${name}\nEmail: ${email}\n\nMessage:\n${message}`);
-    const mailtoUrl = `mailto:parhijyotiswarup@gmail.com?subject=${subject}&body=${body}`;
+    const accessKeyInput = form.querySelector('input[name="access_key"]');
+    const accessKey = accessKeyInput ? accessKeyInput.value.trim() : '';
 
-    if (alertBox) {
-      alertBox.textContent = 'Opening default email client... Thank you for reaching out!';
-      alertBox.className = 'contact-form-alert success';
-      alertBox.style.display = 'block';
+    // If Web3Forms access key is still the placeholder, fallback gracefully
+    if (!accessKey || accessKey === 'YOUR_ACCESS_KEY_HERE') {
+      const subject = encodeURIComponent(`Portfolio Transmission from ${name}`);
+      const body = encodeURIComponent(`Sender: ${name}\nEmail: ${email}\n\nMessage:\n${message}`);
+      const mailtoUrl = `mailto:parhijyotiswarup@gmail.com?subject=${subject}&body=${body}`;
+
+      if (alertBox) {
+        alertBox.innerHTML = `Relaying to local mail client... You can also email directly at <a href="mailto:parhijyotiswarup@gmail.com">parhijyotiswarup@gmail.com</a>`;
+        alertBox.className = 'contact-form-alert success';
+        alertBox.style.display = 'block';
+      }
+
+      window.location.href = mailtoUrl;
+      return;
     }
 
-    window.location.href = mailtoUrl;
+    // Modern async transmission via Web3Forms API
+    const originalBtnHtml = submitBtn ? submitBtn.innerHTML : '';
+    if (submitBtn) {
+      submitBtn.disabled = true;
+      submitBtn.innerHTML = `
+        <span class="submit-spinner"></span>
+        <span>DISPATCHING TRANSMISSION...</span>
+      `;
+    }
+
+    if (alertBox) {
+      alertBox.style.display = 'none';
+      alertBox.textContent = '';
+    }
+
+    try {
+      const formData = new FormData(form);
+      const jsonObject = Object.fromEntries(formData.entries());
+
+      const response = await fetch('https://api.web3forms.com/submit', {
+        method: 'POST',
+        headers: {
+          'Content-Type': 'application/json',
+          'Accept': 'application/json'
+        },
+        body: JSON.stringify(jsonObject)
+      });
+
+      const result = await response.json();
+
+      if (response.status === 200 && result.success) {
+        const safeName = name.replace(/[<>&"']/g, '');
+        if (alertBox) {
+          alertBox.innerHTML = `&check; TRANSMISSION DISPATCHED // Thank you <strong>${safeName}</strong>, your message has been transmitted directly to Jyoti's primary inbox!`;
+          alertBox.className = 'contact-form-alert success';
+          alertBox.style.display = 'block';
+        }
+        form.reset();
+        if (typeof showToast === 'function') {
+          showToast('TRANSMISSION SENT // Inbox delivery confirmed');
+        }
+      } else {
+        throw new Error(result.message || 'Dispatch relay failed');
+      }
+    } catch (err) {
+      console.error('Contact transmission error:', err);
+      if (alertBox) {
+        alertBox.innerHTML = `Transmission could not be dispatched via cloud relay. <a href="mailto:parhijyotiswarup@gmail.com?subject=Portfolio Transmission from ${encodeURIComponent(name)}&body=${encodeURIComponent(message)}">Click here to dispatch directly via Gmail</a>.`;
+        alertBox.className = 'contact-form-alert error';
+        alertBox.style.display = 'block';
+      }
+      if (typeof showToast === 'function') {
+        showToast('RELAY NOTICE // Opening mail client backup');
+      }
+    } finally {
+      if (submitBtn) {
+        submitBtn.disabled = false;
+        submitBtn.innerHTML = originalBtnHtml;
+      }
+    }
   });
 }
 

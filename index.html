@@ -15,7 +15,7 @@
   <link href="https://fonts.googleapis.com/css2?family=Caveat:wght@600&family=JetBrains+Mono:wght@400;500;600;700&family=Plus+Jakarta+Sans:wght@400;500;600;700;800;900&display=swap" rel="stylesheet">
 
   <!-- Core Futuristic Stylesheet -->
-  <link rel="stylesheet" href="css/style.css?v=3.0">
+  <link rel="stylesheet" href="css/style.css?v=3.1">
 </head>
 <body>
 
@@ -1437,6 +1437,13 @@ class LRUCache:
           <div class="contact-form-col">
             <h3 class="channels-heading">Transmission Dispatch</h3>
             <form class="unified-contact-form" id="contactForm">
+              <!-- Web3Forms API Configuration -->
+              <input type="hidden" name="access_key" id="web3formsAccessKey" value="YOUR_ACCESS_KEY_HERE" />
+              <input type="hidden" name="subject" value="New Transmission from Jyoti Swarup Portfolio" />
+              <input type="hidden" name="from_name" value="Portfolio Transmission Dispatcher" />
+              <!-- Anti-Spam Honeypot -->
+              <input type="checkbox" name="botcheck" class="hidden" style="display: none;" />
+
               <div class="form-group">
                 <label for="contactName" class="form-label">YOUR NAME OR ORGANIZATION</label>
                 <input type="text" id="contactName" name="name" class="cyber-form-input" placeholder="e.g. Sarah Connor / Anthropic" required />
@@ -1541,6 +1548,6 @@ class LRUCache:
   <div class="toast-outlet" id="toastOutlet"></div>
 
   <!-- JavaScript -->
-  <script src="js/main.js?v=3.0"></script>
+  <script src="js/main.js?v=3.1"></script>
 </body>
 </html>

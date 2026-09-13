@@ -2500,6 +2500,34 @@ img {
   color: var(--cyber-emerald);
 }
 
+.contact-form-alert a {
+  color: var(--cyber-cyan);
+  text-decoration: underline;
+  transition: opacity 0.2s ease;
+}
+
+.contact-form-alert a:hover {
+  opacity: 0.8;
+}
+
+.submit-spinner {
+  display: inline-block;
+  width: 14px;
+  height: 14px;
+  border: 2px solid rgba(0, 240, 255, 0.3);
+  border-radius: 50%;
+  border-top-color: #00f0ff;
+  animation: cyberFormSpin 0.75s linear infinite;
+  margin-right: 0.5rem;
+  vertical-align: middle;
+}
+
+@keyframes cyberFormSpin {
+  to {
+    transform: rotate(360deg);
+  }
+}
+
 /* Unified Site Footer */
 .unified-footer {
   margin-top: 6rem;
