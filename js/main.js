@@ -35,6 +35,7 @@ document.addEventListener('DOMContentLoaded', () => {
   initContactForm();
   initResumeButtons();
   initDynamicYear();
+  initMobileNav();
 });
 
 /* ==========================================================================
@@ -929,6 +930,41 @@ function initScrollSpy() {
   });
 
   sections.forEach((sec) => observer.observe(sec));
+}
+
+/* ==========================================================================
+   13. RESPONSIVE MOBILE NAVIGATION DRAWER
+   ========================================================================== */
+function initMobileNav() {
+  const toggleBtn = document.getElementById('mobileNavToggle');
+  const navLinks = document.getElementById('navLinks');
+  const backdrop = document.getElementById('navMobileBackdrop');
+  if (!toggleBtn || !navLinks) return;
+
+  function setMenuState(open) {
+    const shouldOpen = typeof open === 'boolean' ? open : !navLinks.classList.contains('mobile-open');
+    navLinks.classList.toggle('mobile-open', shouldOpen);
+    toggleBtn.classList.toggle('active', shouldOpen);
+    toggleBtn.setAttribute('aria-expanded', String(shouldOpen));
+    if (backdrop) backdrop.classList.toggle('active', shouldOpen);
+    document.body.style.overflow = shouldOpen ? 'hidden' : '';
+  }
+
+  toggleBtn.addEventListener('click', () => setMenuState());
+
+  if (backdrop) {
+    backdrop.addEventListener('click', () => setMenuState(false));
+  }
+
+  navLinks.querySelectorAll('.nav-link').forEach((link) => {
+    link.addEventListener('click', () => setMenuState(false));
+  });
+
+  window.addEventListener('keydown', (e) => {
+    if (e.key === 'Escape' && navLinks.classList.contains('mobile-open')) {
+      setMenuState(false);
+    }
+  });
 }
 
 /* ==========================================================================

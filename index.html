@@ -15,7 +15,7 @@
   <link href="https://fonts.googleapis.com/css2?family=Caveat:wght@600&family=JetBrains+Mono:wght@400;500;600;700&family=Plus+Jakarta+Sans:wght@400;500;600;700;800;900&display=swap" rel="stylesheet">
 
   <!-- Core Futuristic Stylesheet -->
-  <link rel="stylesheet" href="css/style.css?v=3.2">
+  <link rel="stylesheet" href="css/style.css?v=3.3">
 </head>
 <body>
 
@@ -76,8 +76,18 @@
           <span>Download Resume</span>
         </a>
       </div>
+
+      <!-- Mobile Navigation Hamburger Toggle -->
+      <button class="nav-mobile-toggle" id="mobileNavToggle" aria-label="Toggle Navigation Menu" aria-expanded="false">
+        <span class="hamburger-line"></span>
+        <span class="hamburger-line"></span>
+        <span class="hamburger-line"></span>
+      </button>
     </div>
   </header>
+
+  <!-- Mobile Navigation Backdrop -->
+  <div class="nav-mobile-backdrop" id="navMobileBackdrop"></div>
 
   <main>
     <!-- =========================================================================
@@ -1548,6 +1558,6 @@ class LRUCache:
   <div class="toast-outlet" id="toastOutlet"></div>
 
   <!-- JavaScript -->
-  <script src="js/main.js?v=3.1"></script>
+  <script src="js/main.js?v=3.3"></script>
 </body>
 </html>
