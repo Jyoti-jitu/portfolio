@@ -1,0 +1,1334 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta name="description" content="Portfolio of Jyoti Swarup Parhi — Computer Science student focused on full-stack development, backend systems, AI/GenAI, microservices, and cloud technologies.">
+  <meta name="author" content="Jyoti Swarup Parhi">
+  <meta name="theme-color" content="#030509">
+
+  <title>Jyoti Swarup Parhi | Full-Stack Developer &amp; Systems Architect</title>
+
+  <!-- Google Fonts: Plus Jakarta Sans, JetBrains Mono, Caveat -->
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Caveat:wght@600&family=JetBrains+Mono:wght@400;500;600;700&family=Plus+Jakarta+Sans:wght@400;500;600;700;800;900&display=swap" rel="stylesheet">
+
+  <!-- Core Futuristic Stylesheet -->
+  <link rel="stylesheet" href="css/style.css">
+</head>
+<body>
+
+  <!-- Interactive Neural Constellation Canvas -->
+  <canvas id="neuralCanvas" class="neural-canvas"></canvas>
+
+  <!-- Custom Dual Magnetic Cyber Cursor -->
+  <div class="cursor-dot" id="cursorDot"></div>
+  <div class="cursor-ring" id="cursorRing"></div>
+
+  <!-- Dynamic Ambient Mouse Glow -->
+  <div class="mouse-spotlight" id="mouseSpotlight"></div>
+
+  <!-- =========================================================================
+       1. NAVIGATION BAR WITH CYBER TELEMETRY & AUDIO SYNTHESIZER
+       ========================================================================= -->
+  <header class="site-header" id="siteHeader">
+    <div class="container nav-container">
+      <a href="#hero" class="nav-brand" aria-label="Jyoti Swarup Parhi Home">
+        <span class="nav-logo-badge">JP</span>
+        <span class="brand-title" data-scramble>Jyoti Swarup</span>
+      </a>
+
+      <nav class="nav-links" id="navLinks" aria-label="Main Navigation">
+        <a href="#hero" class="nav-link active" data-nav="hero" data-scramble>Home</a>
+        <a href="#about" class="nav-link" data-nav="about" data-scramble>About</a>
+        <a href="#skills" class="nav-link" data-nav="skills" data-scramble>Skills</a>
+        <a href="#projects" class="nav-link" data-nav="projects" data-scramble>Projects</a>
+        <a href="#architecture" class="nav-link" data-nav="architecture" data-scramble>Architecture</a>
+        <a href="#dsa" class="nav-link" data-nav="dsa" data-scramble>DSA</a>
+        <a href="#education" class="nav-link" data-nav="education" data-scramble>Education</a>
+        <a href="#contact" class="nav-link" data-nav="contact" data-scramble>Contact</a>
+      </nav>
+
+      <div class="nav-actions">
+        <!-- Audio Synthesizer Toggle -->
+        <button class="btn-cyber-audio" id="audioToggleBtn" title="Toggle Sci-Fi Audio Synthesizer" aria-label="Toggle Audio Feedback">
+          <span class="audio-dot"></span>
+          <span id="audioStatusText">AUDIO: OFF</span>
+        </button>
+
+        <!-- Live Header Telemetry -->
+        <div class="nav-telemetry-pill" title="Live System Telemetry">
+          <span class="telem-live-dot"></span>
+          <span id="navFpsMeter">60 FPS</span>
+        </div>
+
+        <a href="https://github.com/Jyoti-jitu" target="_blank" rel="noopener" class="nav-icon-link" title="GitHub Profile">
+          <svg width="18" height="18" viewBox="0 0 24 24" fill="currentColor"><path d="M12 2C6.477 2 2 6.484 2 12.017c0 4.425 2.865 8.18 6.839 9.504.5.092.682-.217.682-.483 0-.237-.008-.868-.013-1.703-2.782.605-3.369-1.343-3.369-1.343-.454-1.158-1.11-1.466-1.11-1.466-.908-.62.069-.608.069-.608 1.003.07 1.53 1.032 1.53 1.032.892 1.53 2.341 1.088 2.91.832.092-.647.35-1.088.636-1.338-2.22-.253-4.555-1.113-4.555-4.951 0-1.093.39-1.988 1.029-2.688-.103-.253-.446-1.272.098-2.65 0 0 .84-.27 2.75 1.026A9.564 9.564 0 0112 6.844c.85.004 1.705.115 2.504.337 1.909-1.296 2.747-1.027 2.747-1.027.546 1.379.202 2.398.1 2.651.64.7 1.028 1.595 1.028 2.688 0 3.848-2.339 4.695-4.566 4.943.359.309.678.92.678 1.855 0 1.338-.012 2.419-.012 2.747 0 .268.18.58.688.482A10.019 10.019 0 0022 12.017C22 6.484 17.522 2 12 2z"/></svg>
+        </a>
+        <a href="https://www.linkedin.com/in/jyoti-swarup/" target="_blank" rel="noopener" class="nav-icon-link" title="LinkedIn Profile">
+          <svg width="18" height="18" viewBox="0 0 24 24" fill="currentColor"><path d="M19 3a2 2 0 0 1 2 2v14a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2V5a2 2 0 0 1 2-2h14m-.5 15.5v-5.3a3.26 3.26 0 0 0-3.26-3.26c-.85 0-1.84.52-2.28 1.3v-1.11h-2.79v8.37h2.79v-4.93c0-.77.62-1.4 1.39-1.4a1.4 1.4 0 0 1 1.4 1.4v4.93h2.75M6.46 10.9v8.37H9.2V10.9H6.46M7.83 6.6a1.64 1.64 0 1 0 0 3.28 1.64 1.64 0 0 0 0-3.28z"/></svg>
+        </a>
+        <a href="https://leetcode.com/u/jitus7453/" target="_blank" rel="noopener" class="nav-icon-link" title="LeetCode Profile">
+          <svg width="18" height="18" viewBox="0 0 24 24" fill="currentColor"><path d="M13.483 0a1.374 1.374 0 0 0-.961.438L7.116 6.226l-3.854 4.126a5.266 5.266 0 0 0-1.209 2.104 5.35 5.35 0 0 0-.125.513 5.527 5.527 0 0 0 .062 2.362 5.83 5.83 0 0 0 .349 1.017 5.938 5.938 0 0 0 1.271 1.818l4.277 4.193.039.038c2.248 2.165 5.852 2.133 8.063-.074l2.396-2.392c.54-.54.54-1.414.003-1.955a1.378 1.378 0 0 0-1.951-.003l-2.396 2.392a3.021 3.021 0 0 1-4.205.038l-.02-.019-4.276-4.193c-.652-.64-.972-1.469-.948-2.263a2.68 2.68 0 0 1 .066-.523 2.545 2.545 0 0 1 .619-1.164L9.13 8.114c1.058-1.134 3.204-1.27 4.43-.278l3.501 2.831c.593.48 1.461.387 1.94-.207a1.384 1.384 0 0 0-.207-1.943l-3.5-2.831c-.8-.647-1.766-1.045-2.774-1.202l2.015-2.158A1.384 1.384 0 0 0 13.483 0zm-2.866 12.815a1.38 1.38 0 0 0-1.38 1.382 1.38 1.38 0 0 0 1.38 1.382H20.79a1.38 1.38 0 0 0 1.38-1.382 1.38 1.38 0 0 0-1.38-1.382H10.617z"/></svg>
+        </a>
+        <a href="#contact" class="btn-resume-nav" id="navResumeBtn">
+          <span>Download Resume</span>
+        </a>
+      </div>
+    </div>
+  </header>
+
+  <main>
+    <!-- =========================================================================
+         2. HERO SECTION — ASYMMETRICAL 3-PART DYNAMIC HUD
+         ========================================================================= -->
+    <section class="section hero-section" id="hero">
+      <div class="container">
+        <div class="hero-asymmetric-grid">
+          
+          <!-- Column 1: Left Bio & Actions (42% width) -->
+          <div class="hero-left-column" data-reveal>
+            <div class="hero-telemetry-badge">
+              <span class="pulse-node"></span>
+              <span class="telemetry-bracket">[</span>
+              <span>SYS_READY // OPEN TO OPPORTUNITIES</span>
+              <span class="telemetry-bracket">]</span>
+            </div>
+
+            <h1 class="hero-title-main">
+              Hi, I'm <span class="cyber-text-cyan glow-text">Jyoti.</span>
+            </h1>
+
+            <div class="hero-tagline-dynamic">
+              I build <span class="highlight-indigo">full-stack, AI-powered</span> &amp; <span class="highlight-cyan">scalable systems.</span>
+            </div>
+
+            <p class="hero-bio-copy">
+              A Computer Science and Engineering student who enjoys turning complex problems into practical software. I work across full-stack development, backend systems, AI/GenAI, and cloud technologies to build real-world applications.
+            </p>
+
+            <div class="hero-btn-cluster">
+              <a href="#projects" class="btn-cyber-primary" id="heroViewProjectsBtn">
+                <span>View Projects</span>
+                <svg width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><line x1="5" y1="12" x2="19" y2="12"></line><polyline points="12 5 19 12 12 19"></polyline></svg>
+              </a>
+              <a href="#contact" class="btn-cyber-secondary" id="heroResumeBtn">
+                <svg width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M21 15v4a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2v-4"></path><polyline points="7 10 12 15 17 10"></polyline><line x1="12" y1="15" x2="12" y2="3"></line></svg>
+                <span>Download Resume</span>
+              </a>
+              <a href="#contact" class="btn-cyber-secondary">
+                <svg width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><line x1="22" y1="2" x2="11" y2="13"></line><polygon points="22 2 15 22 11 13 2 9 22 2"></polygon></svg>
+                <span>Let's Connect</span>
+              </a>
+            </div>
+
+            <div class="hero-social-pill-row">
+              <a href="https://github.com/Jyoti-jitu" target="_blank" rel="noopener" class="hero-social-pill" title="GitHub Profile">
+                <svg width="16" height="16" viewBox="0 0 24 24" fill="currentColor"><path d="M12 2C6.477 2 2 6.484 2 12.017c0 4.425 2.865 8.18 6.839 9.504.5.092.682-.217.682-.483 0-.237-.008-.868-.013-1.703-2.782.605-3.369-1.343-3.369-1.343-.454-1.158-1.11-1.466-1.11-1.466-.908-.62.069-.608.069-.608 1.003.07 1.53 1.032 1.53 1.032.892 1.53 2.341 1.088 2.91.832.092-.647.35-1.088.636-1.338-2.22-.253-4.555-1.113-4.555-4.951 0-1.093.39-1.988 1.029-2.688-.103-.253-.446-1.272.098-2.65 0 0 .84-.27 2.75 1.026A9.564 9.564 0 0112 6.844c.85.004 1.705.115 2.504.337 1.909-1.296 2.747-1.027 2.747-1.027.546 1.379.202 2.398.1 2.651.64.7 1.028 1.595 1.028 2.688 0 3.848-2.339 4.695-4.566 4.943.359.309.678.92.678 1.855 0 1.338-.012 2.419-.012 2.747 0 .268.18.58.688.482A10.019 10.019 0 0022 12.017C22 6.484 17.522 2 12 2z"/></svg>
+                <span>GitHub</span>
+              </a>
+              <a href="https://www.linkedin.com/in/jyoti-swarup/" target="_blank" rel="noopener" class="hero-social-pill" title="LinkedIn Profile">
+                <svg width="16" height="16" viewBox="0 0 24 24" fill="currentColor"><path d="M19 3a2 2 0 0 1 2 2v14a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2V5a2 2 0 0 1 2-2h14m-.5 15.5v-5.3a3.26 3.26 0 0 0-3.26-3.26c-.85 0-1.84.52-2.28 1.3v-1.11h-2.79v8.37h2.79v-4.93c0-.77.62-1.4 1.39-1.4a1.4 1.4 0 0 1 1.4 1.4v4.93h2.75M6.46 10.9v8.37H9.2V10.9H6.46M7.83 6.6a1.64 1.64 0 1 0 0 3.28 1.64 1.64 0 0 0 0-3.28z"/></svg>
+                <span>LinkedIn</span>
+              </a>
+              <a href="https://leetcode.com/u/jitus7453/" target="_blank" rel="noopener" class="hero-social-pill" title="LeetCode Profile">
+                <svg width="16" height="16" viewBox="0 0 24 24" fill="currentColor"><path d="M13.483 0a1.374 1.374 0 0 0-.961.438L7.116 6.226l-3.854 4.126a5.266 5.266 0 0 0-1.209 2.104 5.35 5.35 0 0 0-.125.513 5.527 5.527 0 0 0 .062 2.362 5.83 5.83 0 0 0 .349 1.017 5.938 5.938 0 0 0 1.271 1.818l4.277 4.193.039.038c2.248 2.165 5.852 2.133 8.063-.074l2.396-2.392c.54-.54.54-1.414.003-1.955a1.378 1.378 0 0 0-1.951-.003l-2.396 2.392a3.021 3.021 0 0 1-4.205.038l-.02-.019-4.276-4.193c-.652-.64-.972-1.469-.948-2.263a2.68 2.68 0 0 1 .066-.523 2.545 2.545 0 0 1 .619-1.164L9.13 8.114c1.058-1.134 3.204-1.27 4.43-.278l3.501 2.831c.593.48 1.461.387 1.94-.207a1.384 1.384 0 0 0-.207-1.943l-3.5-2.831c-.8-.647-1.766-1.045-2.774-1.202l2.015-2.158A1.384 1.384 0 0 0 13.483 0zm-2.866 12.815a1.38 1.38 0 0 0-1.38 1.382 1.38 1.38 0 0 0 1.38 1.382H20.79a1.38 1.38 0 0 0 1.38-1.382 1.38 1.38 0 0 0-1.38-1.382H10.617z"/></svg>
+                <span>LeetCode</span>
+              </a>
+              <a href="mailto:parhijyotiswarup@gmail.com" class="hero-social-pill" title="Email Direct">
+                <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M4 4h16c1.1 0 2 .9 2 2v12c0 1.1-.9 2-2 2H4c-1.1 0-2-.9-2-2V6c0-1.1.9-2 2-2z"></path><polyline points="22,6 12,13 2,6"></polyline></svg>
+                <span>Email</span>
+              </a>
+            </div>
+          </div>
+
+          <!-- Column 2: Center Developer Visual with Floating Holographic Telemetry (33% width) -->
+          <div class="hero-center-column" data-reveal>
+            <div class="developer-hologram-card tilt-element">
+              <!-- Hologram Corner Brackets -->
+              <span class="cyber-bracket bracket-tl"></span>
+              <span class="cyber-bracket bracket-tr"></span>
+              <span class="cyber-bracket bracket-bl"></span>
+              <span class="cyber-bracket bracket-br"></span>
+
+              <img src="assets/hero_jyoti.jpg" alt="Jyoti Swarup Parhi developing systems" class="developer-photo">
+              <div class="hologram-vignette"></div>
+              <div class="hologram-scanline-sweep"></div>
+              
+              <!-- Floating HUD Status Chips -->
+              <div class="hologram-quote-top">
+                <span class="quote-node-dot"></span>
+                <span>&ldquo;Better Software, A Brighter Tomorrow&rdquo;</span>
+              </div>
+
+              <div class="hologram-telemetry-badge-bot">
+                <span class="telemetry-coord">LAT: 20.2961° N &bull; LON: 85.8245° E</span>
+              </div>
+
+              <div class="hologram-signature-script">
+                Building<br>
+                Learning<br>
+                Shipping<br>
+                &mdash; Jyoti
+              </div>
+            </div>
+          </div>
+
+          <!-- Column 3: Cyber Terminal & Tech Logos Above Language (25% width) -->
+          <div class="hero-right-column" data-reveal>
+            <!-- Animated & Interactive Cyber Terminal -->
+            <div class="cyber-terminal-card tilt-element border-beam-card" id="heroTerminal">
+              <div class="terminal-header-bar">
+                <div class="terminal-lights">
+                  <span class="light-dot light-red"></span>
+                  <span class="light-dot light-yellow"></span>
+                  <span class="light-dot light-green"></span>
+                </div>
+                <span class="terminal-hostname">jyoti@arch-linux:~</span>
+                <span class="terminal-live-tag" id="termModeTag">[LIVE SHELL]</span>
+              </div>
+              <div class="terminal-code-body" id="termBody">
+                <div class="term-history-log" id="termHistoryLog">
+                  <div class="term-line"><span class="term-sym">$</span> <span class="term-keyword">whoami</span></div>
+                  <div class="term-output">Jyoti Swarup Parhi</div>
+                  
+                  <div class="term-line"><span class="term-sym">$</span> <span class="term-keyword">role</span></div>
+                  <div class="term-output">Full-Stack Developer</div>
+
+                  <div class="term-line"><span class="term-sym">$</span> <span class="term-keyword">focus</span></div>
+                  <div class="term-output">AI &bull; Backend &bull; Systems</div>
+
+                  <div class="term-line"><span class="term-sym">$</span> <span class="term-keyword">status</span></div>
+                  <div class="term-output" style="color: #00ff9d;">Open to opportunities</div>
+                </div>
+
+                <!-- Animated Interactive Typing & Input Line -->
+                <div class="term-active-line" id="termActiveLine">
+                  <span class="term-sym">$</span>
+                  <span class="term-typing-cmd" id="terminalLiveText"></span>
+                  <input type="text" id="terminalCliInput" class="term-cli-input" placeholder="" autocomplete="off" spellcheck="false" aria-label="Terminal Input" />
+                  <span class="term-caret"></span>
+                </div>
+              </div>
+            </div>
+
+            <!-- Tech Logos Above Language: 2x3 Grid (Matching Reference Exactly) -->
+            <div class="hero-tech-grid">
+              <div class="hero-tech-card tilt-element" title="React 19">
+                <div class="hero-tech-icon-wrap">
+                  <img src="assets/icons/react.svg" alt="React Logo" class="hero-tech-logo" loading="lazy">
+                </div>
+                <span class="hero-tech-name">React</span>
+              </div>
+
+              <div class="hero-tech-card tilt-element" title="Next.js 16">
+                <div class="hero-tech-icon-wrap">
+                  <img src="assets/icons/nextjs.svg" alt="Next.js Logo" class="hero-tech-logo" loading="lazy">
+                </div>
+                <span class="hero-tech-name">Next.js</span>
+              </div>
+
+              <div class="hero-tech-card tilt-element" title="Node.js">
+                <div class="hero-tech-icon-wrap">
+                  <img src="assets/icons/nodejs.svg" alt="Node.js Logo" class="hero-tech-logo" loading="lazy">
+                </div>
+                <span class="hero-tech-name">Node.js</span>
+              </div>
+
+              <div class="hero-tech-card tilt-element" title="Python 3.12">
+                <div class="hero-tech-icon-wrap">
+                  <img src="assets/icons/python.svg" alt="Python Logo" class="hero-tech-logo" loading="lazy">
+                </div>
+                <span class="hero-tech-name">Python</span>
+              </div>
+
+              <div class="hero-tech-card tilt-element" title="AWS Cloud">
+                <div class="hero-tech-icon-wrap">
+                  <img src="assets/icons/aws.svg" alt="AWS Logo" class="hero-tech-logo" loading="lazy">
+                </div>
+                <span class="hero-tech-name">AWS</span>
+              </div>
+
+              <div class="hero-tech-card tilt-element" title="Docker Containerization">
+                <div class="hero-tech-icon-wrap">
+                  <img src="assets/icons/docker.svg" alt="Docker Logo" class="hero-tech-logo" loading="lazy">
+                </div>
+                <span class="hero-tech-name">Docker</span>
+              </div>
+            </div>
+
+          </div>
+
+        </div>
+      </div>
+    </section>
+
+    <!-- =========================================================================
+         3. VERIFIED STATS — ASYMMETRICAL DYNAMIC BENTO GRID
+         ========================================================================= -->
+    <section class="stats-bento-section">
+      <div class="container">
+        <div class="stats-bento-grid">
+          
+          <!-- Card 1: CGPA (Wide 2-Column Spotlight with Progress Bar) -->
+          <div class="bento-stat-card bento-span-2 bento-featured tilt-element" data-reveal>
+            <div class="stat-top-row">
+              <div class="stat-telemetry-icon">
+                <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2"><line x1="18" y1="20" x2="18" y2="10"></line><line x1="12" y1="20" x2="12" y2="4"></line><line x1="6" y1="20" x2="6" y2="14"></line></svg>
+              </div>
+              <span class="stat-hud-tag">[ACADEMIC_PERFORMANCE]</span>
+            </div>
+            <div class="stat-figure-group">
+              <span class="stat-figure">8.6</span>
+              <span class="stat-scale">/ 10.0 CGPA</span>
+            </div>
+            <div class="stat-descriptor">B.Tech Computer Science &amp; Engineering &bull; GITA Autonomous College</div>
+            <div class="stat-meter-track">
+              <div class="stat-meter-fill" style="width: 86%;"></div>
+            </div>
+          </div>
+
+          <!-- Card 2: Degree Program -->
+          <div class="bento-stat-card tilt-element" data-reveal>
+            <div class="stat-top-row">
+              <div class="stat-telemetry-icon">
+                <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2"><path d="M22 10v6M2 10l10-5 10 5-10 5z"></path><path d="M6 12v5c3 3 9 3 12 0v-5"></path></svg>
+              </div>
+              <span class="stat-hud-tag">[DEGREE]</span>
+            </div>
+            <div class="stat-figure">B.Tech</div>
+            <div class="stat-descriptor">Computer Science &amp; Eng.</div>
+          </div>
+
+          <!-- Card 3: Graduation Timeline -->
+          <div class="bento-stat-card tilt-element" data-reveal>
+            <div class="stat-top-row">
+              <div class="stat-telemetry-icon">
+                <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2"><rect x="3" y="4" width="18" height="18" rx="2" ry="2"></rect><line x1="16" y1="2" x2="16" y2="6"></line><line x1="8" y1="2" x2="8" y2="6"></line><line x1="3" y1="10" x2="21" y2="10"></line></svg>
+              </div>
+              <span class="stat-hud-tag">[TIMELINE]</span>
+            </div>
+            <div class="stat-figure">2027</div>
+            <div class="stat-descriptor">Target Graduation</div>
+          </div>
+
+          <!-- Card 4: Engineering Core Focus (Wide 2-Column Spotlight with Tags) -->
+          <div class="bento-stat-card bento-span-2 bento-featured tilt-element" data-reveal>
+            <div class="stat-top-row">
+              <div class="stat-telemetry-icon">
+                <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2"><polygon points="13 2 3 14 12 14 11 22 21 10 12 10 13 2"></polygon></svg>
+              </div>
+              <span class="stat-hud-tag">[SYSTEM_FOCUS]</span>
+            </div>
+            <div class="stat-figure" style="font-size: 1.45rem;">Full-Stack + AI Systems</div>
+            <div class="stat-descriptor">Microservices Architecture &bull; GenAI RAG Pipelines &bull; Cloud Infrastructure</div>
+            <div class="stat-chips-cluster">
+              <span class="stat-chip-pill">FastAPI</span>
+              <span class="stat-chip-pill">Next.js 16</span>
+              <span class="stat-chip-pill">Docker</span>
+              <span class="stat-chip-pill">ChromaDB</span>
+              <span class="stat-chip-pill">Redis</span>
+            </div>
+          </div>
+
+          <!-- Card 5: GitHub Code Activity -->
+          <div class="bento-stat-card tilt-element" data-reveal>
+            <div class="stat-top-row">
+              <div class="stat-telemetry-icon">
+                <svg width="18" height="18" viewBox="0 0 24 24" fill="currentColor"><path d="M12 2C6.477 2 2 6.484 2 12.017c0 4.425 2.865 8.18 6.839 9.504.5.092.682-.217.682-.483 0-.237-.008-.868-.013-1.703-2.782.605-3.369-1.343-3.369-1.343-.454-1.158-1.11-1.466-1.11-1.466-.908-.62.069-.608.069-.608 1.003.07 1.53 1.032 1.53 1.032.892 1.53 2.341 1.088 2.91.832.092-.647.35-1.088.636-1.338-2.22-.253-4.555-1.113-4.555-4.951 0-1.093.39-1.988 1.029-2.688-.103-.253-.446-1.272.098-2.65 0 0 .84-.27 2.75 1.026A9.564 9.564 0 0112 6.844c.85.004 1.705.115 2.504.337 1.909-1.296 2.747-1.027 2.747-1.027.546 1.379.202 2.398.1 2.651.64.7 1.028 1.595 1.028 2.688 0 3.848-2.339 4.695-4.566 4.943.359.309.678.92.678 1.855 0 1.338-.012 2.419-.012 2.747 0 .268.18.58.688.482A10.019 10.019 0 0022 12.017C22 6.484 17.522 2 12 2z"/></svg>
+              </div>
+              <span class="pulse-node"></span>
+            </div>
+            <div class="stat-figure">Active</div>
+            <div class="stat-descriptor">Continuous Code on GitHub</div>
+          </div>
+
+          <!-- Card 6: LeetCode Practice -->
+          <div class="bento-stat-card tilt-element" data-reveal>
+            <div class="stat-top-row">
+              <div class="stat-telemetry-icon">
+                <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2"><polyline points="16 18 22 12 16 6"></polyline><polyline points="8 6 2 12 8 18"></polyline></svg>
+              </div>
+              <span class="stat-hud-tag">[DSA_LOG]</span>
+            </div>
+            <div class="stat-figure">Daily</div>
+            <div class="stat-descriptor">Consistent Problem Solving</div>
+          </div>
+
+        </div>
+      </div>
+    </section>
+
+    <!-- =========================================================================
+         4. ABOUT SECTION & ASYMMETRICAL 8-FOCUS MATRIX
+         ========================================================================= -->
+    <section class="section" id="about">
+      <div class="container">
+        <div class="about-asymmetrical-layout">
+          
+          <!-- Column 1: Narrative (40% width) -->
+          <div class="about-narrative-box tilt-element" data-reveal>
+            <!-- Cyber Bracket Accents -->
+            <span class="cyber-bracket bracket-tl"></span>
+            <span class="cyber-bracket bracket-br"></span>
+
+            <div>
+              <div class="hud-tag">ABOUT_ME // ARCHITECTURE</div>
+              <h2 class="about-headline">Building Real-World Solutions with Code</h2>
+              <p class="about-text-body">
+                I'm Jyoti Swarup Parhi, a Computer Science and Engineering student at GITA Autonomous College, Bhubaneswar. I enjoy building full-stack applications, backend systems, and AI-powered solutions.
+              </p>
+              <p class="about-text-body">
+                I'm deeply interested in microservices, real-time systems, cloud technologies, and solving challenging problems through code.
+              </p>
+            </div>
+            
+            <div class="about-status-banner">
+              <span class="pulse-node"></span>
+              <span>Available for Software Engineering Internships &amp; Roles</span>
+            </div>
+
+            <a href="#contact" class="btn-cyber-secondary" style="width: fit-content; margin-top: 1.5rem;">
+              <span>Connect Directly &rarr;</span>
+            </a>
+          </div>
+
+          <!-- Column 2: 8-Card Engineering Focus Matrix (Asymmetrical Staggered Tiles) -->
+          <div class="focus-matrix-container tilt-element" data-reveal>
+            <div style="display: flex; align-items: center; justify-content: space-between; margin-bottom: 1.5rem;">
+              <h3 class="focus-heading-text">Engineering Focus</h3>
+              <span class="hud-tag" style="margin-bottom: 0;">[SYSTEM_DOMAINS]</span>
+            </div>
+
+            <div class="focus-8-matrix">
+              <div class="focus-box tilt-element">
+                <div class="focus-icon-wrap">
+                  <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect x="2" y="3" width="20" height="14" rx="2" ry="2"></rect><line x1="8" y1="21" x2="16" y2="21"></line><line x1="12" y1="17" x2="12" y2="21"></line></svg>
+                </div>
+                <div class="focus-title-text">Full-Stack Development</div>
+              </div>
+              <div class="focus-box tilt-element">
+                <div class="focus-icon-wrap">
+                  <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><polyline points="16 18 22 12 16 6"></polyline><polyline points="8 6 2 12 8 18"></polyline></svg>
+                </div>
+                <div class="focus-title-text">Backend Engineering</div>
+              </div>
+              <div class="focus-box tilt-element">
+                <div class="focus-icon-wrap">
+                  <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect x="3" y="3" width="7" height="7"></rect><rect x="14" y="3" width="7" height="7"></rect><rect x="14" y="14" width="7" height="7"></rect><rect x="3" y="14" width="7" height="7"></rect></svg>
+                </div>
+                <div class="focus-title-text">Microservices</div>
+              </div>
+              <div class="focus-box tilt-element">
+                <div class="focus-icon-wrap">
+                  <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="12" cy="12" r="10"></circle><polyline points="12 6 12 12 16 14"></polyline></svg>
+                </div>
+                <div class="focus-title-text">Real-Time Systems</div>
+              </div>
+              <div class="focus-box tilt-element">
+                <div class="focus-icon-wrap">
+                  <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M12 2a8 8 0 0 0-8 8c0 3.3 2 6.2 5 7.4V20a1 1 0 0 0 1 1h4a1 1 0 0 0 1-1v-2.6c3-1.2 5-4.1 5-7.4a8 8 0 0 0-8-8z"></path></svg>
+                </div>
+                <div class="focus-title-text">AI / RAG</div>
+              </div>
+              <div class="focus-box tilt-element">
+                <div class="focus-icon-wrap">
+                  <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M18 10h-1.26A8 8 0 1 0 9 20h9a5 5 0 0 0 0-10z"></path></svg>
+                </div>
+                <div class="focus-title-text">Cloud &amp; DevOps</div>
+              </div>
+              <div class="focus-box tilt-element">
+                <div class="focus-icon-wrap">
+                  <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><polygon points="12 2 2 7 12 12 22 7 12 2"></polygon><polyline points="2 17 12 22 22 17"></polyline><polyline points="2 12 12 17 22 12"></polyline></svg>
+                </div>
+                <div class="focus-title-text">System Design</div>
+              </div>
+              <div class="focus-box tilt-element">
+                <div class="focus-icon-wrap">
+                  <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="12" cy="12" r="3"></circle><path d="M19.4 15a1.65 1.65 0 0 0 .33 1.82l.06.06a2 2 0 0 1 0 2.83 2 2 0 0 1-2.83 0l-.06-.06a1.65 1.65 0 0 0-1.82-.33 1.65 1.65 0 0 0-1 1.51V21a2 2 0 0 1-2 2 2 2 0 0 1-2-2v-.09A1.65 1.65 0 0 0 9 19.4a1.65 1.65 0 0 0-1.82.33l-.06.06a2 2 0 0 1-2.83 0 2 2 0 0 1 0-2.83l.06-.06a1.65 1.65 0 0 0 .33-1.82 1.65 1.65 0 0 0-1.51-1H3a2 2 0 0 1-2-2 2 2 0 0 1 2-2h.09A1.65 1.65 0 0 0 4.6 9a1.65 1.65 0 0 0-.33-1.82l-.06-.06a2 2 0 0 1 0-2.83 2 2 0 0 1 2.83 0l.06.06a1.65 1.65 0 0 0 1.82.33H9a1.65 1.65 0 0 0 1-1.51V3a2 2 0 0 1 2-2 2 2 0 0 1 2 2v.09a1.65 1.65 0 0 0 1 1.51 1.65 1.65 0 0 0 1.82-.33l.06-.06a2 2 0 0 1 2.83 0 2 2 0 0 1 0 2.83l-.06.06a1.65 1.65 0 0 0-.33 1.82V9a1.65 1.65 0 0 0 1.51 1H21a2 2 0 0 1 2 2 2 2 0 0 1-2 2h-.09a1.65 1.65 0 0 0-1.51 1z"></path></svg>
+                </div>
+                <div class="focus-title-text">Problem Solving</div>
+              </div>
+            </div>
+          </div>
+
+          <!-- Column 3: Holographic Quote Card -->
+          <div class="quote-hologram-box tilt-element" data-reveal>
+            <div class="quote-mark">&ldquo;</div>
+            <div class="quote-content">
+              &ldquo;I believe in building products that solve real problems and create real impact.&rdquo;
+            </div>
+            <div class="quote-credit">
+              &mdash; Jyoti Swarup Parhi
+            </div>
+            <div class="quote-telemetry-tag">
+              <span>PHILOSOPHY // ENGINEERING</span>
+            </div>
+          </div>
+
+        </div>
+      </div>
+    </section>
+
+    <!-- =========================================================================
+         5. TECH SKILLS SECTION — ASYMMETRICAL FULL-WIDTH MATRIX
+         ========================================================================= -->
+    <section class="section" id="skills">
+      <div class="container">
+        <div style="display: flex; align-items: flex-end; justify-content: space-between; margin-bottom: 2.5rem; flex-wrap: wrap; gap: 1rem;" data-reveal>
+          <div>
+            <div class="hud-tag">TECH_STACK // CAPABILITIES</div>
+            <h2 class="section-title">Tools &amp; Technologies I Work With</h2>
+          </div>
+          <a href="#projects" class="btn-cyber-secondary" style="font-size: 0.85rem; padding: 0.55rem 1.25rem;">
+            <span>Explore Implementations &rarr;</span>
+          </a>
+        </div>
+
+        <div class="skills-panoramic-layout">
+          <!-- Row 1: 5 Columns with Staggered Visual Hierarchy -->
+          <div class="skills-row-primary">
+            
+            <!-- 1. Languages -->
+            <div class="skill-bento-pod tilt-element" data-reveal>
+              <div class="pod-header">
+                <span class="pod-header-glyph">&#123; &#125;</span>
+                <span data-scramble>Languages</span>
+              </div>
+              <div class="pod-tech-grid">
+                <div class="tech-card-vertical tilt-element" title="Python 3.x">
+                  <div class="tech-icon-wrapper">
+                    <img src="assets/icons/python.svg" alt="Python Logo" class="tech-icon-img" loading="lazy">
+                  </div>
+                  <span class="tech-title-text">Python</span>
+                </div>
+                <div class="tech-card-vertical tilt-element" title="Java">
+                  <div class="tech-icon-wrapper">
+                    <img src="assets/icons/java.svg" alt="Java Logo" class="tech-icon-img" loading="lazy">
+                  </div>
+                  <span class="tech-title-text">Java</span>
+                </div>
+                <div class="tech-card-vertical tilt-element" title="C Programming">
+                  <div class="tech-icon-wrapper">
+                    <img src="assets/icons/c.svg" alt="C Logo" class="tech-icon-img" loading="lazy">
+                  </div>
+                  <span class="tech-title-text">C</span>
+                </div>
+                <div class="tech-card-vertical tilt-element" title="JavaScript (ES6+)">
+                  <div class="tech-icon-wrapper">
+                    <img src="assets/icons/javascript.svg" alt="JavaScript Logo" class="tech-icon-img" loading="lazy">
+                  </div>
+                  <span class="tech-title-text">JavaScript</span>
+                </div>
+              </div>
+            </div>
+
+            <!-- 2. Frontend -->
+            <div class="skill-bento-pod tilt-element" data-reveal>
+              <div class="pod-header">
+                <span class="pod-header-glyph">&lt; / &gt;</span>
+                <span data-scramble>Frontend</span>
+              </div>
+              <div class="pod-tech-grid">
+                <div class="tech-card-vertical tilt-element" title="HTML5 Semantic Markup">
+                  <div class="tech-icon-wrapper">
+                    <img src="assets/icons/html5.svg" alt="HTML5 Logo" class="tech-icon-img" loading="lazy">
+                  </div>
+                  <span class="tech-title-text">HTML5</span>
+                </div>
+                <div class="tech-card-vertical tilt-element" title="CSS3 Architecture">
+                  <div class="tech-icon-wrapper">
+                    <img src="assets/icons/css3.svg" alt="CSS3 Logo" class="tech-icon-img" loading="lazy">
+                  </div>
+                  <span class="tech-title-text">CSS3</span>
+                </div>
+                <div class="tech-card-vertical tilt-element" title="React 19">
+                  <div class="tech-icon-wrapper">
+                    <img src="assets/icons/react.svg" alt="React Logo" class="tech-icon-img" loading="lazy">
+                  </div>
+                  <span class="tech-title-text">React</span>
+                </div>
+                <div class="tech-card-vertical tilt-element" title="Next.js App Router">
+                  <div class="tech-icon-wrapper">
+                    <img src="assets/icons/nextjs.svg" alt="Next.js Logo" class="tech-icon-img" loading="lazy">
+                  </div>
+                  <span class="tech-title-text">Next.js</span>
+                </div>
+              </div>
+            </div>
+
+            <!-- 3. Backend -->
+            <div class="skill-bento-pod tilt-element" data-reveal>
+              <div class="pod-header">
+                <span class="pod-header-glyph">&equiv;</span>
+                <span data-scramble>Backend</span>
+              </div>
+              <div class="pod-tech-grid">
+                <div class="tech-card-vertical tilt-element" title="Node.js Runtime">
+                  <div class="tech-icon-wrapper">
+                    <img src="assets/icons/nodejs.svg" alt="Node.js Logo" class="tech-icon-img" loading="lazy">
+                  </div>
+                  <span class="tech-title-text">Node.js</span>
+                </div>
+                <div class="tech-card-vertical tilt-element" title="Express Framework">
+                  <div class="tech-icon-wrapper">
+                    <img src="assets/icons/express.svg" alt="Express Logo" class="tech-icon-img" loading="lazy">
+                  </div>
+                  <span class="tech-title-text">Express</span>
+                </div>
+                <div class="tech-card-vertical tilt-element" title="FastAPI High-Performance Async">
+                  <div class="tech-icon-wrapper">
+                    <img src="assets/icons/fastapi.svg" alt="FastAPI Logo" class="tech-icon-img" loading="lazy">
+                  </div>
+                  <span class="tech-title-text">FastAPI</span>
+                </div>
+                <div class="tech-card-vertical tilt-element" title="Flask Microframework">
+                  <div class="tech-icon-wrapper">
+                    <img src="assets/icons/flask.svg" alt="Flask Logo" class="tech-icon-img" loading="lazy">
+                  </div>
+                  <span class="tech-title-text">Flask</span>
+                </div>
+              </div>
+            </div>
+
+            <!-- 4. Databases -->
+            <div class="skill-bento-pod tilt-element" data-reveal>
+              <div class="pod-header">
+                <span class="pod-header-glyph">&diams;</span>
+                <span data-scramble>Databases</span>
+              </div>
+              <div class="pod-tech-grid">
+                <div class="tech-card-vertical tilt-element" title="PostgreSQL Relational DB">
+                  <div class="tech-icon-wrapper">
+                    <img src="assets/icons/postgresql.svg" alt="PostgreSQL Logo" class="tech-icon-img" loading="lazy">
+                  </div>
+                  <span class="tech-title-text">PostgreSQL</span>
+                </div>
+                <div class="tech-card-vertical tilt-element" title="MongoDB Document Store">
+                  <div class="tech-icon-wrapper">
+                    <img src="assets/icons/mongodb.svg" alt="MongoDB Logo" class="tech-icon-img" loading="lazy">
+                  </div>
+                  <span class="tech-title-text">MongoDB</span>
+                </div>
+                <div class="tech-card-vertical tilt-element" title="MySQL">
+                  <div class="tech-icon-wrapper">
+                    <img src="assets/icons/mysql.svg" alt="MySQL Logo" class="tech-icon-img" loading="lazy">
+                  </div>
+                  <span class="tech-title-text">MySQL</span>
+                </div>
+                <div class="tech-card-vertical tilt-element" title="Firebase Realtime DB">
+                  <div class="tech-icon-wrapper">
+                    <img src="assets/icons/firebase.svg" alt="Firebase Logo" class="tech-icon-img" loading="lazy">
+                  </div>
+                  <span class="tech-title-text">Firebase</span>
+                </div>
+              </div>
+            </div>
+
+            <!-- 5. AI / ML -->
+            <div class="skill-bento-pod tilt-element" data-reveal>
+              <div class="pod-header">
+                <span class="pod-header-glyph">&lowast;</span>
+                <span data-scramble>AI / ML</span>
+              </div>
+              <div class="pod-tech-grid">
+                <div class="tech-card-vertical tilt-element" title="TensorFlow Deep Learning">
+                  <div class="tech-icon-wrapper">
+                    <img src="assets/icons/tensorflow.svg" alt="TensorFlow Logo" class="tech-icon-img" loading="lazy">
+                  </div>
+                  <span class="tech-title-text">TensorFlow</span>
+                </div>
+                <div class="tech-card-vertical tilt-element" title="PyTorch Neural Networks">
+                  <div class="tech-icon-wrapper">
+                    <img src="assets/icons/pytorch.svg" alt="PyTorch Logo" class="tech-icon-img" loading="lazy">
+                  </div>
+                  <span class="tech-title-text">PyTorch</span>
+                </div>
+                <div class="tech-card-vertical tilt-element" title="scikit-learn Machine Learning">
+                  <div class="tech-icon-wrapper">
+                    <img src="assets/icons/scikitlearn.svg" alt="scikit-learn Logo" class="tech-icon-img" loading="lazy">
+                  </div>
+                  <span class="tech-title-text">scikit-learn</span>
+                </div>
+                <div class="tech-card-vertical tilt-element" title="OpenCV Computer Vision">
+                  <div class="tech-icon-wrapper">
+                    <img src="assets/icons/opencv.svg" alt="OpenCV Logo" class="tech-icon-img" loading="lazy">
+                  </div>
+                  <span class="tech-title-text">OpenCV</span>
+                </div>
+              </div>
+            </div>
+
+          </div>
+
+          <!-- Row 2: Asymmetrical Cloud/DevOps (Wide) & Tools -->
+          <div class="skills-row-secondary">
+            
+            <div class="skill-bento-pod tilt-element skill-pod-wide" data-reveal>
+              <div class="pod-header">
+                <span class="pod-header-glyph">&#9729;</span>
+                <span data-scramble>DevOps &amp; Cloud Infrastructure</span>
+                <span class="pod-hud-tag" style="margin-left: auto;">[CLOUD_ENGINEERING]</span>
+              </div>
+              <div class="pod-tech-grid">
+                <div class="tech-card-vertical tilt-element" title="Docker Containerization">
+                  <div class="tech-icon-wrapper">
+                    <img src="assets/icons/docker.svg" alt="Docker Logo" class="tech-icon-img" loading="lazy">
+                  </div>
+                  <span class="tech-title-text">Docker</span>
+                </div>
+                <div class="tech-card-vertical tilt-element" title="Kubernetes Orchestration">
+                  <div class="tech-icon-wrapper">
+                    <img src="assets/icons/kubernetes.svg" alt="Kubernetes Logo" class="tech-icon-img" loading="lazy">
+                  </div>
+                  <span class="tech-title-text">Kubernetes</span>
+                </div>
+                <div class="tech-card-vertical tilt-element" title="AWS Cloud Infrastructure">
+                  <div class="tech-icon-wrapper">
+                    <img src="assets/icons/aws.svg" alt="AWS Logo" class="tech-icon-img" loading="lazy">
+                  </div>
+                  <span class="tech-title-text">AWS</span>
+                </div>
+                <div class="tech-card-vertical tilt-element" title="GitHub Actions CI/CD">
+                  <div class="tech-icon-wrapper">
+                    <img src="assets/icons/github.svg" alt="GitHub Logo" class="tech-icon-img" loading="lazy">
+                  </div>
+                  <span class="tech-title-text">GitHub</span>
+                </div>
+                <div class="tech-card-vertical tilt-element" title="Linux (Arch / Ubuntu / Debian)">
+                  <div class="tech-icon-wrapper">
+                    <img src="assets/icons/linux.svg" alt="Linux Logo" class="tech-icon-img" loading="lazy">
+                  </div>
+                  <span class="tech-title-text">Linux</span>
+                </div>
+              </div>
+            </div>
+
+            <div class="skill-bento-pod tilt-element" data-reveal>
+              <div class="pod-header">
+                <span class="pod-header-glyph">&#9881;</span>
+                <span data-scramble>Other Tools &amp; Automation</span>
+              </div>
+              <div class="pod-tech-grid">
+                <div class="tech-card-vertical tilt-element" title="Postman API Suite">
+                  <div class="tech-icon-wrapper">
+                    <img src="assets/icons/postman.svg" alt="Postman Logo" class="tech-icon-img" loading="lazy">
+                  </div>
+                  <span class="tech-title-text">Postman</span>
+                </div>
+                <div class="tech-card-vertical tilt-element" title="Google Colab">
+                  <div class="tech-icon-wrapper">
+                    <img src="assets/icons/colab.svg" alt="Google Colab Logo" class="tech-icon-img" loading="lazy">
+                  </div>
+                  <span class="tech-title-text">Colab</span>
+                </div>
+                <div class="tech-card-vertical tilt-element" title="Git Version Control">
+                  <div class="tech-icon-wrapper">
+                    <img src="assets/icons/git.svg" alt="Git Logo" class="tech-icon-img" loading="lazy">
+                  </div>
+                  <span class="tech-title-text">Git</span>
+                </div>
+              </div>
+            </div>
+
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- =========================================================================
+         6. FEATURED PROJECTS — ASYMMETRICAL 7/5 & 5/7 STAGGERED SHOWCASE
+         ========================================================================= -->
+    <section class="section" id="projects">
+      <div class="container">
+        <div style="display: flex; align-items: flex-end; justify-content: space-between; margin-bottom: 2.5rem; flex-wrap: wrap; gap: 1rem;" data-reveal>
+          <div>
+            <div class="hud-tag">CASE_STUDIES // PRODUCTION</div>
+            <h2 class="section-title">Turning Ideas into Real-World Applications</h2>
+          </div>
+          <a href="https://github.com/Jyoti-jitu" target="_blank" rel="noopener" class="btn-cyber-secondary" style="font-size: 0.85rem; padding: 0.55rem 1.25rem;">
+            <span>View All Projects on GitHub &rarr;</span>
+          </a>
+        </div>
+
+        <div class="projects-asymmetric-row">
+          
+          <!-- Card 1: FluxChat — Featured Spotlight (Wide 7-Column Span) -->
+          <article class="project-hologram-card project-span-7 project-card-spotlight tilt-element"
+                   data-reveal
+                   data-title="FluxChat"
+                   data-subtitle="Real-Time Chat & Collaboration Platform"
+                   data-category="Microservices • WebSockets • Next.js"
+                   data-year="2024"
+                   data-image="assets/projects/fluxchat.jpg"
+                   data-desc="A modern real-time communication platform built with Next.js and distributed FastAPI microservices."
+                   data-features="7 distributed microservices (API Gateway, Auth, User, Chat, Message, WebSocket, Notification)|Real-time direct & group messaging with WebSockets|Squad & community management with status stories|Redis-based token revocation and JWT auth"
+                   data-github="https://github.com/Jyoti-jitu/chat-app">
+            
+            <div class="project-viewport">
+              <img src="assets/projects/fluxchat.jpg" alt="FluxChat interface mockup" class="project-viewport-img" loading="lazy">
+              <span class="project-live-indicator">
+                <span class="live-dot-pulse"></span>
+                <span>Featured &bull; WebSockets Live</span>
+              </span>
+              <div class="project-cyber-overlay"></div>
+            </div>
+
+            <div class="project-info-body">
+              <div class="project-hud-code">PROJ_01 // 7_MICROSERVICES</div>
+              <h3 class="project-title-text">FluxChat</h3>
+              <div class="project-sub-label">Real-Time Chat &amp; Collaboration Platform</div>
+              <p class="project-brief">A distributed communication platform featuring 7 independent microservices, persistent WebSockets, squad stories, and sub-millisecond Redis session caching.</p>
+
+              <div class="project-tech-badges">
+                <span class="tech-badge-micro">Next.js 16</span>
+                <span class="tech-badge-micro">FastAPI</span>
+                <span class="tech-badge-micro">MongoDB</span>
+                <span class="tech-badge-micro">Redis Pub/Sub</span>
+                <span class="tech-badge-micro">Docker</span>
+              </div>
+
+              <div class="project-bottom-actions">
+                <span class="action-trigger-view">Interactive Case Study &rarr;</span>
+                <span class="action-trigger-gh">
+                  <svg width="14" height="14" viewBox="0 0 24 24" fill="currentColor"><path d="M12 2C6.477 2 2 6.484 2 12.017c0 4.425 2.865 8.18 6.839 9.504.5.092.682-.217.682-.483 0-.237-.008-.868-.013-1.703-2.782.605-3.369-1.343-3.369-1.343-.454-1.158-1.11-1.466-1.11-1.466-.908-.62.069-.608.069-.608 1.003.07 1.53 1.032 1.53 1.032.892 1.53 2.341 1.088 2.91.832.092-.647.35-1.088.636-1.338-2.22-.253-4.555-1.113-4.555-4.951 0-1.093.39-1.988 1.029-2.688-.103-.253-.446-1.272.098-2.65 0 0 .84-.27 2.75 1.026A9.564 9.564 0 0112 6.844c.85.004 1.705.115 2.504.337 1.909-1.296 2.747-1.027 2.747-1.027.546 1.379.202 2.398.1 2.651.64.7 1.028 1.595 1.028 2.688 0 3.848-2.339 4.695-4.566 4.943.359.309.678.92.678 1.855 0 1.338-.012 2.419-.012 2.747 0 .268.18.58.688.482A10.019 10.019 0 0022 12.017C22 6.484 17.522 2 12 2z"/></svg>
+                  <span>GitHub</span>
+                </span>
+              </div>
+            </div>
+          </article>
+
+          <!-- Card 2: RentHub (5-Column Span) -->
+          <article class="project-hologram-card project-span-5 tilt-element"
+                   data-reveal
+                   data-title="RentHub"
+                   data-subtitle="Vehicle Rental Platform"
+                   data-category="Full-Stack • PostgreSQL • Razorpay"
+                   data-year="2024"
+                   data-image="assets/projects/renthub.jpg"
+                   data-desc="A multi-tenant vehicle rental platform with bookings, payments, AI chatbot, and more."
+                   data-features="Multi-role architecture (Admins, Sponsors, Renters)|Razorpay checkout & automated payment flows|QR code vehicle pickup and handoff verification|Integrated Google Generative AI support bot"
+                   data-github="https://github.com/Jyoti-jitu/Rental-website-backend">
+            
+            <div class="project-viewport">
+              <img src="assets/projects/renthub.jpg" alt="RentHub vehicle platform mockup" class="project-viewport-img" loading="lazy">
+              <span class="project-live-indicator">Production</span>
+              <div class="project-cyber-overlay"></div>
+            </div>
+
+            <div class="project-info-body">
+              <div class="project-hud-code">PROJ_02 // COMMERCE</div>
+              <h3 class="project-title-text">RentHub</h3>
+              <div class="project-sub-label">Multi-Tenant Vehicle Rental Platform</div>
+              <p class="project-brief">End-to-end booking infrastructure with role-based auth (RBAC), automated Razorpay webhooks, and QR vehicle verification.</p>
+
+              <div class="project-tech-badges">
+                <span class="tech-badge-micro">React</span>
+                <span class="tech-badge-micro">Node.js</span>
+                <span class="tech-badge-micro">PostgreSQL</span>
+                <span class="tech-badge-micro">Razorpay</span>
+              </div>
+
+              <div class="project-bottom-actions">
+                <span class="action-trigger-view">View Details &rarr;</span>
+                <span class="action-trigger-gh">
+                  <svg width="14" height="14" viewBox="0 0 24 24" fill="currentColor"><path d="M12 2C6.477 2 2 6.484 2 12.017c0 4.425 2.865 8.18 6.839 9.504.5.092.682-.217.682-.483 0-.237-.008-.868-.013-1.703-2.782.605-3.369-1.343-3.369-1.343-.454-1.158-1.11-1.466-1.11-1.466-.908-.62.069-.608.069-.608 1.003.07 1.53 1.032 1.53 1.032.892 1.53 2.341 1.088 2.91.832.092-.647.35-1.088.636-1.338-2.22-.253-4.555-1.113-4.555-4.951 0-1.093.39-1.988 1.029-2.688-.103-.253-.446-1.272.098-2.65 0 0 .84-.27 2.75 1.026A9.564 9.564 0 0112 6.844c.85.004 1.705.115 2.504.337 1.909-1.296 2.747-1.027 2.747-1.027.546 1.379.202 2.398.1 2.651.64.7 1.028 1.595 1.028 2.688 0 3.848-2.339 4.695-4.566 4.943.359.309.678.92.678 1.855 0 1.338-.012 2.419-.012 2.747 0 .268.18.58.688.482A10.019 10.019 0 0022 12.017C22 6.484 17.522 2 12 2z"/></svg>
+                  <span>GitHub</span>
+                </span>
+              </div>
+            </div>
+          </article>
+
+          <!-- Card 3: Gemini RAG Studio (5-Column Span) -->
+          <article class="project-hologram-card project-span-5 tilt-element"
+                   data-reveal
+                   data-title="Gemini RAG Studio"
+                   data-subtitle="RAG Application Backend"
+                   data-category="AI / GenAI • ChromaDB • FastAPI"
+                   data-year="2024"
+                   data-image="assets/projects/rag_studio.jpg"
+                   data-desc="A production-ready RAG system using Google Gemini with document ingestion and semantic search."
+                   data-features="PDF/TXT document ingestion with PyMuPDF|Intelligent overlapping text chunking|ChromaDB vector embeddings storage|Cosine semantic similarity retrieval & source attribution"
+                   data-github="https://github.com/Jyoti-jitu/gemini-rag-studio">
+            
+            <div class="project-viewport">
+              <img src="assets/projects/rag_studio.jpg" alt="Gemini RAG Studio dashboard mockup" class="project-viewport-img" loading="lazy">
+              <span class="project-live-indicator">AI System</span>
+              <div class="project-cyber-overlay"></div>
+            </div>
+
+            <div class="project-info-body">
+              <div class="project-hud-code">PROJ_03 // GENAI_RAG</div>
+              <h3 class="project-title-text">Gemini RAG Studio</h3>
+              <div class="project-sub-label">Retrieval-Augmented Generation Backend</div>
+              <p class="project-brief">Autonomous document ingestion, semantic chunking, and ChromaDB vector embeddings powered by Google Gemini.</p>
+
+              <div class="project-tech-badges">
+                <span class="tech-badge-micro">Python</span>
+                <span class="tech-badge-micro">FastAPI</span>
+                <span class="tech-badge-micro">ChromaDB</span>
+                <span class="tech-badge-micro">Google Gemini</span>
+              </div>
+
+              <div class="project-bottom-actions">
+                <span class="action-trigger-view">View Architecture &rarr;</span>
+                <span class="action-trigger-gh">
+                  <svg width="14" height="14" viewBox="0 0 24 24" fill="currentColor"><path d="M12 2C6.477 2 2 6.484 2 12.017c0 4.425 2.865 8.18 6.839 9.504.5.092.682-.217.682-.483 0-.237-.008-.868-.013-1.703-2.782.605-3.369-1.343-3.369-1.343-.454-1.158-1.11-1.466-1.11-1.466-.908-.62.069-.608.069-.608 1.003.07 1.53 1.032 1.53 1.032.892 1.53 2.341 1.088 2.91.832.092-.647.35-1.088.636-1.338-2.22-.253-4.555-1.113-4.555-4.951 0-1.093.39-1.988 1.029-2.688-.103-.253-.446-1.272.098-2.65 0 0 .84-.27 2.75 1.026A9.564 9.564 0 0112 6.844c.85.004 1.705.115 2.504.337 1.909-1.296 2.747-1.027 2.747-1.027.546 1.379.202 2.398.1 2.651.64.7 1.028 1.595 1.028 2.688 0 3.848-2.339 4.695-4.566 4.943.359.309.678.92.678 1.855 0 1.338-.012 2.419-.012 2.747 0 .268.18.58.688.482A10.019 10.019 0 0022 12.017C22 6.484 17.522 2 12 2z"/></svg>
+                  <span>GitHub</span>
+                </span>
+              </div>
+            </div>
+          </article>
+
+          <!-- Card 4: Personal Vault — Security Spotlight (Wide 7-Column Span) -->
+          <article class="project-hologram-card project-span-7 project-card-spotlight tilt-element"
+                   data-reveal
+                   data-title="Personal Vault"
+                   data-subtitle="Secure Digital Asset Management"
+                   data-category="Security • Encryption • PostgreSQL"
+                   data-year="2023"
+                   data-image="assets/projects/vault.jpg"
+                   data-desc="A secure platform to store and organize sensitive information, documents and more."
+                   data-features="Encrypted documents and confidential records vault|Bcrypt password hashing and JWT access tokens|Strict file sanitization and anti-injection guards"
+                   data-github="https://github.com/Jyoti-jitu">
+            
+            <div class="project-viewport">
+              <img src="assets/projects/vault.jpg" alt="Personal Vault security UI" class="project-viewport-img" loading="lazy">
+              <span class="project-live-indicator">Security Vault</span>
+              <div class="project-cyber-overlay"></div>
+            </div>
+
+            <div class="project-info-body">
+              <div class="project-hud-code">PROJ_04 // CRYPTO_VAULT</div>
+              <h3 class="project-title-text">Personal Vault</h3>
+              <div class="project-sub-label">Zero-Knowledge Digital Asset &amp; Document Management</div>
+              <p class="project-brief">Hardened cryptographic storage designed to protect confidential files, encrypted notes, and sensitive credentials with bcrypt and stateless JWT verification.</p>
+
+              <div class="project-tech-badges">
+                <span class="tech-badge-micro">React</span>
+                <span class="tech-badge-micro">Node.js</span>
+                <span class="tech-badge-micro">Supabase</span>
+                <span class="tech-badge-micro">Bcrypt</span>
+                <span class="tech-badge-micro">AES-256</span>
+              </div>
+
+              <div class="project-bottom-actions">
+                <span class="action-trigger-view">View Case Study &rarr;</span>
+                <span class="action-trigger-gh">
+                  <svg width="14" height="14" viewBox="0 0 24 24" fill="currentColor"><path d="M12 2C6.477 2 2 6.484 2 12.017c0 4.425 2.865 8.18 6.839 9.504.5.092.682-.217.682-.483 0-.237-.008-.868-.013-1.703-2.782.605-3.369-1.343-3.369-1.343-.454-1.158-1.11-1.466-1.11-1.466-.908-.62.069-.608.069-.608 1.003.07 1.53 1.032 1.53 1.032.892 1.53 2.341 1.088 2.91.832.092-.647.35-1.088.636-1.338-2.22-.253-4.555-1.113-4.555-4.951 0-1.093.39-1.988 1.029-2.688-.103-.253-.446-1.272.098-2.65 0 0 .84-.27 2.75 1.026A9.564 9.564 0 0112 6.844c.85.004 1.705.115 2.504.337 1.909-1.296 2.747-1.027 2.747-1.027.546 1.379.202 2.398.1 2.651.64.7 1.028 1.595 1.028 2.688 0 3.848-2.339 4.695-4.566 4.943.359.309.678.92.678 1.855 0 1.338-.012 2.419-.012 2.747 0 .268.18.58.688.482A10.019 10.019 0 0022 12.017C22 6.484 17.522 2 12 2z"/></svg>
+                  <span>GitHub</span>
+                </span>
+              </div>
+            </div>
+          </article>
+
+        </div>
+      </div>
+    </section>
+
+    <!-- =========================================================================
+         7. ARCHITECTURE SHOWCASE ("HOW I BUILD SYSTEMS") — LIVING CIRCUIT BLUEPRINT
+         ========================================================================= -->
+    <section class="section" id="architecture">
+      <div class="container">
+        <div class="circuit-architecture-card tilt-element" data-reveal>
+          <div class="hud-tag">SYSTEM_DESIGN // FLOW_CHART</div>
+          <h2 class="section-title">From Idea to Scalable Systems</h2>
+          <p class="section-desc">
+            I focus not only on building interfaces, but also on how services communicate, how data flows, how authentication is handled, and how applications scale.
+          </p>
+
+          <!-- Interactive Circuit Canvas with Animated Data Packet Flow -->
+          <div class="circuit-canvas">
+            
+            <!-- Living Animated Data Packet -->
+            <div class="circuit-packet-tracker">
+              <div class="circuit-glowing-packet"></div>
+            </div>
+
+            <div class="circuit-flow-line-primary">
+              <div class="circuit-node active" data-node="user">
+                <div class="circuit-node-icon">
+                  <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M20 21v-2a4 4 0 0 0-4-4H8a4 4 0 0 0-4 4v2"></path><circle cx="12" cy="7" r="4"></circle></svg>
+                </div>
+                <div class="circuit-node-content">
+                  <h4>User</h4>
+                  <p>Client Browser</p>
+                </div>
+                <span class="node-pulse-ring"></span>
+              </div>
+
+              <div class="circuit-pulse-beam">&rarr;</div>
+
+              <div class="circuit-node" data-node="frontend">
+                <div class="circuit-node-icon">
+                  <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect x="2" y="3" width="20" height="14" rx="2" ry="2"></rect><line x1="8" y1="21" x2="16" y2="21"></line><line x1="12" y1="17" x2="12" y2="21"></line></svg>
+                </div>
+                <div class="circuit-node-content">
+                  <h4>Frontend</h4>
+                  <p>(Next.js / React)</p>
+                </div>
+              </div>
+
+              <div class="circuit-pulse-beam">&rarr;</div>
+
+              <div class="circuit-node" data-node="gateway">
+                <div class="circuit-node-icon">
+                  <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect x="3" y="3" width="7" height="7"></rect><rect x="14" y="3" width="7" height="7"></rect><rect x="14" y="14" width="7" height="7"></rect><rect x="3" y="14" width="7" height="7"></rect></svg>
+                </div>
+                <div class="circuit-node-content">
+                  <h4>API Gateway</h4>
+                  <p>Reverse Proxy &bull; Route</p>
+                </div>
+              </div>
+
+              <div class="circuit-pulse-beam">&rarr;</div>
+
+              <div class="circuit-node" data-node="services" style="border-style: dashed; border-color: rgba(0, 240, 255, 0.45);">
+                <div class="circuit-node-icon">
+                  <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><polyline points="16 18 22 12 16 6"></polyline><polyline points="8 6 2 12 8 18"></polyline></svg>
+                </div>
+                <div class="circuit-node-content">
+                  <h4>Services</h4>
+                  <p>(Node.js / FastAPI)</p>
+                </div>
+              </div>
+
+              <div class="circuit-pulse-beam">&rarr;</div>
+
+              <div class="circuit-node" data-node="database">
+                <div class="circuit-node-icon">
+                  <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><ellipse cx="12" cy="5" rx="9" ry="3"></ellipse><path d="M21 12c0 1.66-4 3-9 3s-9-1.34-9-3"></path><path d="M3 5v14c0 1.66 4 3 9 3s9-1.34 9-3V5"></path></svg>
+                </div>
+                <div class="circuit-node-content">
+                  <h4>Database</h4>
+                  <p>(PostgreSQL / MongoDB)</p>
+                </div>
+              </div>
+            </div>
+
+            <!-- Row 2: Secondary Supporting Layers -->
+            <div class="circuit-flow-line-secondary">
+              <div class="circuit-sub-node" data-node="auth">
+                <span style="color: #00ff9d;">🛡️</span>
+                <span><strong>Auth:</strong> (JWT / RBAC)</span>
+              </div>
+              <div class="circuit-sub-node" data-node="cache">
+                <span style="color: #ef4444;">⚡</span>
+                <span><strong>Cache:</strong> (Redis)</span>
+              </div>
+              <div class="circuit-sub-node" data-node="external">
+                <span style="color: #ffb703;">☁️</span>
+                <span><strong>External APIs:</strong> (AWS / 3rd Party)</span>
+              </div>
+            </div>
+          </div>
+
+          <!-- Live Dynamic Console -->
+          <div class="circuit-inspector-console" id="archInspector">
+            <div class="console-title" id="archInspectTitle">System Layer: User &bull; Client Browser</div>
+            <div class="console-text" id="archInspectDesc">
+              Initiates secure HTTPS and WebSocket connections. Handled with optimized single-page app hydration, client caching, and responsive typography across all form factors.
+            </div>
+            <div class="console-specs">
+              <span><strong>Protocols:</strong> <span id="archInspectProtocols">HTTPS, WSS</span></span>
+              <span><strong>Applied In:</strong> <span id="archInspectProject">All Web Applications</span></span>
+            </div>
+          </div>
+
+        </div>
+      </div>
+    </section>
+
+    <!-- =========================================================================
+         8. DSA / PROBLEM SOLVING SECTION — ASYMMETRICAL CODING HUD
+         ========================================================================= -->
+    <section class="section" id="dsa">
+      <div class="container">
+        <div class="hud-tag" data-reveal>ALGORITHMS // PATTERNS</div>
+        <h2 class="section-title" data-reveal>Algorithmic Practice &amp; Patterns</h2>
+        <p class="section-desc" data-reveal>
+          Practicing algorithms across multiple core DSA patterns to build intuition for optimal time and space complexity.
+        </p>
+
+        <div class="dsa-asymmetrical-grid" style="margin-top: 2.25rem;">
+          
+          <!-- Left Column: Patterns Matrix & Telemetry -->
+          <div class="dsa-matrix-card tilt-element" data-reveal>
+            <div style="display: flex; align-items: center; justify-content: space-between;">
+              <h3 style="font-size: 1.15rem; font-weight: 700; color: var(--text-pure);">Core Patterns Matrix</h3>
+              <span class="hud-tag" style="margin-bottom: 0;">[20_PATTERNS]</span>
+            </div>
+
+            <div class="dsa-chips-cluster">
+              <span class="dsa-pattern-badge active-pattern" data-pattern="lru">Arrays</span>
+              <span class="dsa-pattern-badge" data-pattern="lru">Two Pointers</span>
+              <span class="dsa-pattern-badge" data-pattern="rotated">Binary Search</span>
+              <span class="dsa-pattern-badge" data-pattern="lru">Hash Table</span>
+              <span class="dsa-pattern-badge" data-pattern="lru">Strings</span>
+              <span class="dsa-pattern-badge" data-pattern="rotated">Dynamic Programming</span>
+              <span class="dsa-pattern-badge">Recursion</span>
+              <span class="dsa-pattern-badge" data-pattern="lru">Linked Lists</span>
+              <span class="dsa-pattern-badge">Stacks</span>
+              <span class="dsa-pattern-badge">Monotonic Stack</span>
+              <span class="dsa-pattern-badge">Trees</span>
+              <span class="dsa-pattern-badge">DFS</span>
+              <span class="dsa-pattern-badge">BST</span>
+              <span class="dsa-pattern-badge">Binary Tree</span>
+              <span class="dsa-pattern-badge">Database</span>
+              <span class="dsa-pattern-badge">Prefix Sum</span>
+              <span class="dsa-pattern-badge">Matrix</span>
+              <span class="dsa-pattern-badge">Greedy</span>
+              <span class="dsa-pattern-badge">Sorting</span>
+              <span class="dsa-pattern-badge">Bit Manipulation</span>
+            </div>
+
+            <div style="display: flex; gap: 1rem; flex-wrap: wrap; margin-top: auto; padding-top: 1.5rem; border-top: 1px solid var(--border-dim);">
+              <a href="https://leetcode.com/u/jitus7453/" target="_blank" rel="noopener" class="btn-cyber-primary" style="font-size: 0.88rem; padding: 0.65rem 1.4rem;">
+                <span>View LeetCode Profile</span>
+              </a>
+              <a href="https://github.com/Jyoti-jitu/Leetcode" target="_blank" rel="noopener" class="btn-cyber-secondary" style="font-size: 0.88rem; padding: 0.65rem 1.4rem;">
+                <span>View Solutions on GitHub</span>
+              </a>
+            </div>
+          </div>
+
+          <!-- Right Column: Interactive Code Editor Terminal with Tabs -->
+          <div class="dsa-code-terminal-box tilt-element" data-reveal>
+            <!-- Code Tab Bar -->
+            <div class="dsa-tab-selector">
+              <button class="dsa-tab-btn active" data-snippet="lru">
+                <span>LRU_Cache.py</span>
+                <span class="tab-complexity-tag">O(1) GET/PUT</span>
+              </button>
+              <button class="dsa-tab-btn" data-snippet="search">
+                <span>Binary_Search.py</span>
+                <span class="tab-complexity-tag">O(log N)</span>
+              </button>
+              <button class="dsa-tab-btn" data-snippet="twosum">
+                <span>Two_Sum_Pointers.py</span>
+                <span class="tab-complexity-tag">O(N)</span>
+              </button>
+            </div>
+
+            <pre class="dsa-code-view" id="dsaCodeDisplay"><code>class Node:
+    def __init__(self, key: int, val: int):
+        self.key, self.val = key, val
+        self.prev = self.next = None
+
+class LRUCache:
+    def __init__(self, capacity: int):
+        self.cap = capacity
+        self.cache = {} # key -> Node
+        self.head, self.tail = Node(0, 0), Node(0, 0)
+        self.head.next, self.tail.prev = self.tail, self.head
+
+    def get(self, key: int) -> int:
+        if key in self.cache:
+            self._remove(self.cache[key])
+            self._insert(self.cache[key])
+            return self.cache[key].val
+        return -1
+
+    def put(self, key: int, value: int) -> None:
+        if key in self.cache:
+            self._remove(self.cache[key])
+        self.cache[key] = Node(key, value)
+        self._insert(self.cache[key])
+        if len(self.cache) > self.cap:
+            lru = self.head.next
+            self._remove(lru)
+            del self.cache[lru.key]</code></pre>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- =========================================================================
+         9. EDUCATION TIMELINE
+         ========================================================================= -->
+    <section class="section" id="education">
+      <div class="container">
+        <div class="hud-tag" style="justify-content: center; display: flex;" data-reveal>ACADEMICS // TIMELINE</div>
+        <h2 class="section-title" style="text-align: center;" data-reveal>Education</h2>
+        <p class="section-desc" style="text-align: center; margin: 0.5rem auto 3rem auto;" data-reveal>
+          Rigorous computer science foundation paired with independent software engineering practice.
+        </p>
+
+        <div class="education-timeline-track">
+          <div class="timeline-checkpoint" data-reveal>
+            <div class="checkpoint-node">
+              <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2"><path d="M22 10v6M2 10l10-5 10 5-10 5z"></path><path d="M6 12v5c3 3 9 3 12 0v-5"></path></svg>
+            </div>
+            <div class="checkpoint-card tilt-element">
+              <div class="checkpoint-dates">2023 &mdash; 2027</div>
+              <h3 class="checkpoint-program">B.Tech in Computer Science &amp; Engineering</h3>
+              <div class="checkpoint-school">GITA Autonomous College, Bhubaneswar</div>
+              <div class="checkpoint-score-badge">Current CGPA: 8.6</div>
+            </div>
+          </div>
+
+          <div class="timeline-checkpoint" data-reveal>
+            <div class="checkpoint-node">
+              <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2"><rect x="3" y="4" width="18" height="18" rx="2" ry="2"></rect><line x1="16" y1="2" x2="16" y2="6"></line><line x1="8" y1="2" x2="8" y2="6"></line></svg>
+            </div>
+            <div class="checkpoint-card tilt-element">
+              <div class="checkpoint-dates">2021 &mdash; 2023</div>
+              <h3 class="checkpoint-program">Higher Secondary Certificate (12th Grade)</h3>
+              <div class="checkpoint-school">NRI International School, Bhadrak</div>
+              <div class="checkpoint-score-badge">Score: 69.9%</div>
+            </div>
+          </div>
+
+          <div class="timeline-checkpoint" data-reveal>
+            <div class="checkpoint-node">
+              <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2"><path d="M14 2H6a2 2 0 0 0-2 2v16a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V8z"></path><polyline points="14 2 14 8 20 8"></polyline><line x1="16" y1="13" x2="8" y2="13"></line><line x1="16" y1="17" x2="8" y2="17"></line></svg>
+            </div>
+            <div class="checkpoint-card tilt-element">
+              <div class="checkpoint-dates">2020 &mdash; 2021</div>
+              <h3 class="checkpoint-program">Secondary School Certificate (10th Grade)</h3>
+              <div class="checkpoint-school">Royal Public School Bidya Bihar, Balasore, Odisha</div>
+              <div class="checkpoint-score-badge">Score: 61.2%</div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- =========================================================================
+         10. CONTACT SECTION
+         ========================================================================= -->
+    <section class="section" id="contact" style="padding-bottom: 2rem;">
+      <div class="container">
+        <div class="contact-panoramic-box tilt-element" data-reveal>
+          <div>
+            <div class="hud-tag">COMMS // CHANNEL</div>
+            <h2 style="font-size: 2.4rem; font-weight: 800; color: var(--text-pure); margin-bottom: 1.25rem;">Let's Build Something.</h2>
+            <p style="color: var(--text-mid); line-height: 1.7; margin-bottom: 2rem; font-size: 1.05rem;">
+              Have an opportunity, project idea, or interesting engineering problem? I'd be happy to connect.
+            </p>
+
+            <div style="display: flex; flex-direction: column; gap: 1rem; margin-bottom: 2.25rem;">
+              <div style="display: flex; align-items: center; gap: 0.75rem; color: var(--text-high); font-size: 0.96rem;">
+                <span style="color: var(--cyber-cyan);">&#9993;</span>
+                <span>parhijyotiswarup@gmail.com</span>
+              </div>
+              <div style="display: flex; align-items: center; gap: 0.75rem; color: var(--text-high); font-size: 0.96rem;">
+                <span style="color: var(--cyber-cyan);">&#9742;</span>
+                <span>+91 9090598756</span>
+              </div>
+              <div style="display: flex; align-items: center; gap: 0.75rem; color: var(--text-high); font-size: 0.96rem;">
+                <span style="color: var(--cyber-cyan);">&#9678;</span>
+                <span>Odisha, India</span>
+              </div>
+            </div>
+
+            <div style="display: flex; gap: 1rem; flex-wrap: wrap;">
+              <a href="mailto:parhijyotiswarup@gmail.com" class="btn-cyber-primary" style="font-size: 0.88rem; padding: 0.75rem 1.45rem;">
+                <span>Email Me</span>
+              </a>
+              <a href="https://www.linkedin.com/in/jyoti-swarup/" target="_blank" rel="noopener" class="btn-cyber-secondary" style="font-size: 0.88rem; padding: 0.75rem 1.45rem;">
+                <span>LinkedIn</span>
+              </a>
+              <a href="https://github.com/Jyoti-jitu" target="_blank" rel="noopener" class="btn-cyber-secondary" style="font-size: 0.88rem; padding: 0.75rem 1.45rem;">
+                <span>GitHub</span>
+              </a>
+            </div>
+          </div>
+
+          <form class="contact-form-layout" id="portfolioContactForm">
+            <div class="form-field-group">
+              <label for="contactName" class="form-label-cyber">Your Name</label>
+              <input type="text" id="contactName" name="name" class="form-input-cyber" placeholder="e.g. Maya Sharma" required>
+            </div>
+            <div class="form-field-group">
+              <label for="contactEmail" class="form-label-cyber">Email Address</label>
+              <input type="email" id="contactEmail" name="email" class="form-input-cyber" placeholder="e.g. maya@example.com" required>
+            </div>
+            <div class="form-field-group">
+              <label for="contactMessage" class="form-label-cyber">Message</label>
+              <textarea id="contactMessage" name="message" class="form-textarea-cyber" placeholder="Tell me about your project, team opportunity, or engineering problem..." required></textarea>
+            </div>
+            <button type="submit" class="btn-cyber-primary" style="justify-content: center; width: 100%;">
+              <span>Send Message</span>
+              <svg width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><line x1="22" y1="2" x2="11" y2="13"></line><polygon points="22 2 15 22 11 13 2 9 22 2"></polygon></svg>
+            </button>
+          </form>
+        </div>
+      </div>
+    </section>
+  </main>
+
+  <!-- =========================================================================
+       FOOTER
+       ========================================================================= -->
+  <footer class="site-footer">
+    <div class="container" style="display: flex; align-items: center; justify-content: space-between; flex-wrap: wrap; gap: 1.5rem;">
+      <div>
+        <div style="font-weight: 800; color: var(--text-pure); font-size: 1.1rem;">Jyoti Swarup Parhi</div>
+        <div style="font-size: 0.84rem; color: var(--text-mid);">&ldquo;Building, learning, and shipping.&rdquo;</div>
+      </div>
+
+      <div style="font-size: 0.82rem; color: var(--text-dark); font-family: var(--font-mono);">
+        &copy; <span id="footerYear">2026</span> Jyoti Swarup Parhi. All rights reserved.
+      </div>
+
+      <div style="display: flex; gap: 1.5rem; font-size: 0.88rem;">
+        <a href="https://github.com/Jyoti-jitu" target="_blank" rel="noopener">GitHub</a>
+        <a href="https://www.linkedin.com/in/jyoti-swarup/" target="_blank" rel="noopener">LinkedIn</a>
+        <a href="https://leetcode.com/u/jitus7453/" target="_blank" rel="noopener">LeetCode</a>
+        <a href="mailto:parhijyotiswarup@gmail.com">Email</a>
+      </div>
+    </div>
+  </footer>
+
+  <!-- Modal Drawer -->
+  <div class="project-modal-backdrop" id="caseStudyModal" role="dialog" aria-modal="true" aria-hidden="true">
+    <div class="project-modal-card">
+      <button class="modal-close-trigger" id="modalCloseTrigger" aria-label="Close modal">&times;</button>
+      <div class="modal-image-holder">
+        <img src="" alt="Project visual" id="modalImg">
+      </div>
+      <div class="modal-content-details">
+        <div class="modal-meta-bar">
+          <div class="modal-meta-col">
+            <h4>Timeline</h4>
+            <p id="modalYear">2024</p>
+          </div>
+          <div class="modal-meta-col">
+            <h4>Domain</h4>
+            <p id="modalCategory">Full-Stack</p>
+          </div>
+          <div class="modal-meta-col">
+            <h4>Engineering Role</h4>
+            <p>Architect &amp; Builder</p>
+          </div>
+        </div>
+
+        <h2 style="font-size: 1.85rem; font-weight: 800; color: var(--text-pure); margin-bottom: 0.4rem;" id="modalTitle">Project Title</h2>
+        <div style="font-size: 1rem; color: var(--cyber-cyan); font-weight: 600; margin-bottom: 1.25rem;" id="modalSubtitle">Subtitle</div>
+        <p style="font-size: 0.98rem; line-height: 1.7; color: var(--text-mid); margin-bottom: 1.75rem;" id="modalDesc">Detailed description...</p>
+
+        <div style="margin-bottom: 2rem;">
+          <h4 style="font-size: 0.95rem; color: var(--text-pure); margin-bottom: 0.75rem;">Key Engineering Highlights</h4>
+          <ul class="modal-feature-items" id="modalFeaturesList"></ul>
+        </div>
+
+        <div style="display: flex; gap: 1rem; flex-wrap: wrap;">
+          <a href="#" target="_blank" rel="noopener" class="btn-cyber-primary" id="modalGithubBtn">
+            <svg width="16" height="16" viewBox="0 0 24 24" fill="currentColor"><path d="M12 2C6.477 2 2 6.484 2 12.017c0 4.425 2.865 8.18 6.839 9.504.5.092.682-.217.682-.483 0-.237-.008-.868-.013-1.703-2.782.605-3.369-1.343-3.369-1.343-.454-1.158-1.11-1.466-1.11-1.466-.908-.62.069-.608.069-.608 1.003.07 1.53 1.032 1.53 1.032.892 1.53 2.341 1.088 2.91.832.092-.647.35-1.088.636-1.338-2.22-.253-4.555-1.113-4.555-4.951 0-1.093.39-1.988 1.029-2.688-.103-.253-.446-1.272.098-2.65 0 0 .84-.27 2.75 1.026A9.564 9.564 0 0112 6.844c.85.004 1.705.115 2.504.337 1.909-1.296 2.747-1.027 2.747-1.027.546 1.379.202 2.398.1 2.651.64.7 1.028 1.595 1.028 2.688 0 3.848-2.339 4.695-4.566 4.943.359.309.678.92.678 1.855 0 1.338-.012 2.419-.012 2.747 0 .268.18.58.688.482A10.019 10.019 0 0022 12.017C22 6.484 17.522 2 12 2z"/></svg>
+            <span>View Source on GitHub</span>
+          </a>
+          <button class="btn-cyber-secondary" id="modalCloseBtnBottom">Close Window</button>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <div class="toast-outlet" id="toastOutlet"></div>
+
+  <!-- JavaScript -->
+  <script src="js/main.js"></script>
+</body>
+</html>
