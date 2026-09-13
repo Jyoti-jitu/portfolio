@@ -774,7 +774,7 @@ class LRUCache:
 };
 
 function initDSACodeTabs() {
-  const tabs = document.querySelectorAll('.dsa-tab-btn, .swiss-tab-btn');
+  const tabs = document.querySelectorAll('.dsa-code-tab-btn, .dsa-tab-btn, .swiss-tab-btn');
   const codeDisplay = document.getElementById('dsaCodeDisplay');
   const codeTitle = document.getElementById('dsaCodeTitle');
   const codeComplexity = document.getElementById('dsaCodeComplexity');
@@ -819,7 +819,7 @@ function initDSACodeTabs() {
    11. INTERACTIVE MICROSERVICES ARCHITECTURE INSPECTOR
    ========================================================================== */
 function initArchitectureInspector() {
-  const nodes = document.querySelectorAll('.diag-node, .diag-sub-card, .swiss-node, .swiss-sub-card');
+  const nodes = document.querySelectorAll('.diag-flow-node, .diag-node, .diag-sub-card, .swiss-node, .swiss-sub-card');
   if (nodes.length === 0) return;
 
   const nodeSpecs = {
@@ -840,6 +840,10 @@ function initArchitectureInspector() {
       const key = node.dataset.node;
       if (key && nodeSpecs[key]) {
         showToast(nodeSpecs[key]);
+        const titleEl = document.getElementById('archInspectTitle');
+        const descEl = document.getElementById('archInspectDesc');
+        if (titleEl) titleEl.textContent = `System Layer: ${key.toUpperCase()}`;
+        if (descEl) descEl.textContent = nodeSpecs[key];
       }
     });
   });
@@ -1012,7 +1016,7 @@ function initContactForm() {
     if (!name || !email || !message) {
       if (alertBox) {
         alertBox.textContent = 'Please populate all fields before dispatching transmission.';
-        alertBox.className = 'swiss-form-alert error';
+        alertBox.className = 'contact-form-alert error';
         alertBox.style.display = 'block';
       }
       return;
@@ -1025,7 +1029,7 @@ function initContactForm() {
 
     if (alertBox) {
       alertBox.textContent = 'Opening default email client... Thank you for reaching out!';
-      alertBox.className = 'swiss-form-alert success';
+      alertBox.className = 'contact-form-alert success';
       alertBox.style.display = 'block';
     }
 
