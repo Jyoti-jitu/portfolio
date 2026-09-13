@@ -928,176 +928,199 @@
     </section>
 
     <!-- =========================================================================
-         7. ARCHITECTURE ("HOW I BUILD SYSTEMS") — MATCHING REFERENCE DESIGN
+         7. ARCHITECTURE ("HOW I BUILD SYSTEMS") — SWISS EDITORIAL STYLE
          ========================================================================= -->
-    <section class="section" id="architecture">
+    <section class="section swiss-section" id="architecture">
       <div class="container">
         
-        <!-- Progression Banner -->
-        <div class="arch-progression-banner" data-reveal>
-          <span class="prog-step active">IDEA</span>
-          <span class="prog-arrow">&rarr;</span>
-          <span class="prog-step">ARCHITECTURE</span>
-          <span class="prog-arrow">&rarr;</span>
-          <span class="prog-step">CODE</span>
-          <span class="prog-arrow">&rarr;</span>
-          <span class="prog-step">SYSTEM</span>
-          <span class="prog-arrow">&rarr;</span>
-          <span class="prog-step">DEPLOY</span>
+        <!-- Swiss Section Header -->
+        <div class="swiss-section-header" data-reveal>
+          <div class="swiss-meta-row">
+            <span class="swiss-section-num">03 // SYSTEM ARCHITECTURE</span>
+            <span class="swiss-status-pill"><span class="swiss-dot-live"></span>DISTRIBUTED TOPOLOGY</span>
+          </div>
+          <h2 class="swiss-headline">From Idea to Scalable Systems.</h2>
+          <p class="swiss-lead-sub">
+            Architecting decoupled microservices, sub-millisecond caching layers, and zero-trust authentication pipelines.
+          </p>
         </div>
 
-        <div class="architecture-showcase-grid">
+        <!-- Swiss Progression Pipeline Banner -->
+        <div class="swiss-pipeline-chain" data-reveal>
+          <div class="chain-step active">
+            <span class="chain-num">01</span>
+            <span class="chain-label">CONCEPT</span>
+          </div>
+          <span class="chain-divider">&mdash;&rsaquo;</span>
+          <div class="chain-step">
+            <span class="chain-num">02</span>
+            <span class="chain-label">ARCHITECTURE</span>
+          </div>
+          <span class="chain-divider">&mdash;&rsaquo;</span>
+          <div class="chain-step">
+            <span class="chain-num">03</span>
+            <span class="chain-label">IMPLEMENTATION</span>
+          </div>
+          <span class="chain-divider">&mdash;&rsaquo;</span>
+          <div class="chain-step">
+            <span class="chain-num">04</span>
+            <span class="chain-label">TESTING &amp; CI/CD</span>
+          </div>
+          <span class="chain-divider">&mdash;&rsaquo;</span>
+          <div class="chain-step">
+            <span class="chain-num">05</span>
+            <span class="chain-label">CLOUD DEPLOY</span>
+          </div>
+        </div>
+
+        <!-- Swiss Asymmetric Showcase Grid -->
+        <div class="swiss-architecture-grid">
           
-          <!-- Left Column: Story & System Overview -->
-          <div class="arch-story-column" data-reveal>
-            <div class="hud-tag">HOW I BUILD SYSTEMS</div>
-            <h2 class="section-title">From Idea to Scalable Systems</h2>
-            <p class="arch-lead-copy">
-              I focus not only on building interfaces, but also on how services communicate, how data flows, how authentication is handled, and how applications scale.
-            </p>
-            
-            <div class="arch-principles-list">
-              <div class="arch-principle-item">
-                <span class="principle-bullet">01</span>
-                <div>
-                  <strong>Decoupled Microservices:</strong> Independent services communicating via async WebSockets &amp; REST APIs.
-                </div>
+          <!-- Left: Architectural Tenets -->
+          <div class="swiss-tenets-col" data-reveal>
+            <div class="swiss-card-subtitle">SYSTEM DESIGN TENETS</div>
+            <div class="swiss-tenet-item">
+              <div class="tenet-index">01</div>
+              <div class="tenet-body">
+                <h3 class="tenet-title">Decoupled Microservices</h3>
+                <p class="tenet-desc">Autonomous domain services communicating via asynchronous WebSockets, REST APIs, and event-driven Redis pub/sub queues.</p>
               </div>
-              <div class="arch-principle-item">
-                <span class="principle-bullet">02</span>
-                <div>
-                  <strong>Sub-Millisecond Caching:</strong> Redis token buckets and session stores reducing database roundtrips.
-                </div>
+            </div>
+
+            <div class="swiss-tenet-item">
+              <div class="tenet-index">02</div>
+              <div class="tenet-body">
+                <h3 class="tenet-title">Sub-Millisecond Cache Invalidation</h3>
+                <p class="tenet-desc">Redis token-bucket rate limiting and in-memory session caching to safeguard database pools and guarantee sub-50ms roundtrips.</p>
               </div>
-              <div class="arch-principle-item">
-                <span class="principle-bullet">03</span>
-                <div>
-                  <strong>Zero-Trust Security:</strong> Stateless JWT validation, RBAC policies, and encrypted payloads.
-                </div>
+            </div>
+
+            <div class="swiss-tenet-item">
+              <div class="tenet-index">03</div>
+              <div class="tenet-body">
+                <h3 class="tenet-title">Zero-Trust Security &amp; RBAC</h3>
+                <p class="tenet-desc">Stateless JWT authentication with cryptographically hashed secrets, client-side AES encryption, and role-based permissions.</p>
               </div>
             </div>
           </div>
 
-          <!-- Right Column: Visual Architectural Pipeline (Exact Reference Layout) -->
-          <div class="arch-diagram-column" data-reveal>
-            <div class="arch-diagram-card tilt-element">
+          <!-- Right: Visual System Diagram Card (Matching Reference Schema) -->
+          <div class="swiss-diagram-col" data-reveal>
+            <div class="swiss-diagram-card tilt-element">
               
-              <div class="diagram-header-tag">
-                <span class="diag-dot"></span>
-                <span>SYSTEM_PIPELINE // DISTRIBUTED TOPOLOGY</span>
+              <div class="diagram-meta-bar">
+                <span class="diag-sys-code">SYS_TOPOLOGY // V.24</span>
+                <span class="diag-status-badge">HIGH-AVAILABILITY CLUSTER</span>
               </div>
 
-              <!-- Top Primary Pipeline Row -->
-              <div class="diagram-pipeline-primary">
+              <!-- Primary Flow Pipeline -->
+              <div class="diagram-primary-flow">
                 
-                <!-- Node 1: User -->
-                <div class="diag-node node-user" data-node="user">
-                  <div class="diag-icon-box icon-purple">
+                <!-- Node: User -->
+                <div class="swiss-node" data-node="user">
+                  <div class="swiss-node-icon icon-purple">
                     <svg width="22" height="22" viewBox="0 0 24 24" fill="currentColor"><path d="M12 12c2.21 0 4-1.79 4-4s-1.79-4-4-4-4 1.79-4 4 1.79 4 4 4zm0 2c-2.67 0-8 1.34-8 4v2h16v-2c0-2.66-5.33-4-8-4z"/></svg>
                   </div>
-                  <span class="diag-node-name">User</span>
+                  <span class="swiss-node-title">User</span>
                 </div>
 
-                <div class="diag-flow-arrow">
-                  <svg width="24" height="12" viewBox="0 0 24 12" fill="none"><path d="M0 6h22M18 1l5 5-5 5" stroke="#38bdf8" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/></svg>
+                <div class="swiss-flow-sep">
+                  <svg width="24" height="12" viewBox="0 0 24 12" fill="none"><path d="M0 6h22M18 1l5 5-5 5" stroke="#38bdf8" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"/></svg>
                 </div>
 
-                <!-- Node 2: Frontend -->
-                <div class="diag-node node-frontend" data-node="frontend">
-                  <div class="diag-icon-box icon-blue">
-                    <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect x="2" y="3" width="20" height="14" rx="2" ry="2"></rect><line x1="8" y1="21" x2="16" y2="21"></line><line x1="12" y1="17" x2="12" y2="21"></line></svg>
+                <!-- Node: Frontend -->
+                <div class="swiss-node" data-node="frontend">
+                  <div class="swiss-node-icon icon-blue">
+                    <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8"><rect x="2" y="3" width="20" height="14" rx="2" ry="2"></rect><line x1="8" y1="21" x2="16" y2="21"></line><line x1="12" y1="17" x2="12" y2="21"></line></svg>
                   </div>
-                  <span class="diag-node-name">Frontend</span>
-                  <span class="diag-node-sub">(Next.js / React)</span>
+                  <span class="swiss-node-title">Frontend</span>
+                  <span class="swiss-node-sub">(Next.js / React)</span>
                 </div>
 
-                <div class="diag-flow-arrow">
-                  <svg width="24" height="12" viewBox="0 0 24 12" fill="none"><path d="M0 6h22M18 1l5 5-5 5" stroke="#38bdf8" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/></svg>
+                <div class="swiss-flow-sep">
+                  <svg width="24" height="12" viewBox="0 0 24 12" fill="none"><path d="M0 6h22M18 1l5 5-5 5" stroke="#38bdf8" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"/></svg>
                 </div>
 
-                <!-- Node 3: API Gateway -->
-                <div class="diag-node node-gateway" data-node="gateway">
-                  <div class="diag-icon-box icon-purple">
-                    <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect x="3" y="3" width="7" height="7"></rect><rect x="14" y="3" width="7" height="7"></rect><rect x="14" y="14" width="7" height="7"></rect><rect x="3" y="14" width="7" height="7"></rect></svg>
+                <!-- Node: API Gateway -->
+                <div class="swiss-node" data-node="gateway">
+                  <div class="swiss-node-icon icon-purple">
+                    <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8"><rect x="3" y="3" width="7" height="7"></rect><rect x="14" y="3" width="7" height="7"></rect><rect x="14" y="14" width="7" height="7"></rect><rect x="3" y="14" width="7" height="7"></rect></svg>
                   </div>
-                  <span class="diag-node-name">API Gateway</span>
+                  <span class="swiss-node-title">API Gateway</span>
                 </div>
 
-                <div class="diag-flow-arrow">
-                  <svg width="24" height="12" viewBox="0 0 24 12" fill="none"><path d="M0 6h22M18 1l5 5-5 5" stroke="#38bdf8" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/></svg>
+                <div class="swiss-flow-sep">
+                  <svg width="24" height="12" viewBox="0 0 24 12" fill="none"><path d="M0 6h22M18 1l5 5-5 5" stroke="#38bdf8" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"/></svg>
                 </div>
 
-                <!-- Node 4: Services -->
-                <div class="diag-node node-services" data-node="services">
-                  <div class="diag-icon-box icon-green">
-                    <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><polyline points="16 18 22 12 16 6"></polyline><polyline points="8 6 2 12 8 18"></polyline></svg>
+                <!-- Node: Services -->
+                <div class="swiss-node" data-node="services">
+                  <div class="swiss-node-icon icon-green">
+                    <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8"><polyline points="16 18 22 12 16 6"></polyline><polyline points="8 6 2 12 8 18"></polyline></svg>
                   </div>
-                  <span class="diag-node-name">Services</span>
-                  <span class="diag-node-sub">(Node.js / FastAPI)</span>
+                  <span class="swiss-node-title">Services</span>
+                  <span class="swiss-node-sub">(Node.js / FastAPI)</span>
                 </div>
 
-                <div class="diag-flow-arrow">
-                  <svg width="24" height="12" viewBox="0 0 24 12" fill="none"><path d="M0 6h22M18 1l5 5-5 5" stroke="#38bdf8" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/></svg>
+                <div class="swiss-flow-sep">
+                  <svg width="24" height="12" viewBox="0 0 24 12" fill="none"><path d="M0 6h22M18 1l5 5-5 5" stroke="#38bdf8" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"/></svg>
                 </div>
 
-                <!-- Node 5: Database -->
-                <div class="diag-node node-database" data-node="database">
-                  <div class="diag-icon-box icon-cyan">
-                    <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><ellipse cx="12" cy="5" rx="9" ry="3"></ellipse><path d="M21 12c0 1.66-4 3-9 3s-9-1.34-9-3"></path><path d="M3 5v14c0 1.66 4 3 9 3s9-1.34 9-3V5"></path></svg>
+                <!-- Node: Database -->
+                <div class="swiss-node" data-node="database">
+                  <div class="swiss-node-icon icon-cyan">
+                    <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8"><ellipse cx="12" cy="5" rx="9" ry="3"></ellipse><path d="M21 12c0 1.66-4 3-9 3s-9-1.34-9-3"></path><path d="M3 5v14c0 1.66 4 3 9 3s9-1.34 9-3V5"></path></svg>
                   </div>
-                  <span class="diag-node-name">Database</span>
-                  <span class="diag-node-sub">(PostgreSQL / MongoDB)</span>
+                  <span class="swiss-node-title">Database</span>
+                  <span class="swiss-node-sub">(PostgreSQL / MongoDB)</span>
                 </div>
 
               </div>
 
-              <!-- Bottom Secondary Infrastructure Row -->
-              <div class="diagram-pipeline-secondary">
+              <!-- Supporting Sublayer Flow -->
+              <div class="diagram-secondary-flow">
                 
-                <!-- Auth Block -->
-                <div class="diag-node-sublayer node-auth">
-                  <div class="diag-connector-vertical">
-                    <svg width="12" height="20" viewBox="0 0 12 20" fill="none"><path d="M6 20V2M1 7l5-5 5 5" stroke="#00ff9d" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/></svg>
+                <div class="swiss-sublayer-unit">
+                  <div class="sublayer-conn-arrow">
+                    <svg width="10" height="18" viewBox="0 0 10 18" fill="none"><path d="M5 18V2M1 6l4-4 4 4" stroke="#00ff9d" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"/></svg>
                   </div>
-                  <div class="diag-sub-card">
-                    <div class="diag-icon-box-small icon-green">
-                      <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2"><path d="M12 22s8-4 8-10V5l-8-3-8 3v7c0 6 8 10 8 10z"></path></svg>
+                  <div class="swiss-sub-card" data-node="auth">
+                    <div class="sub-icon-box icon-green">
+                      <svg width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M12 22s8-4 8-10V5l-8-3-8 3v7c0 6 8 10 8 10z"></path></svg>
                     </div>
                     <div>
-                      <span class="diag-sub-title">Auth</span>
-                      <span class="diag-sub-detail">(JWT / RBAC)</span>
+                      <span class="sub-title">Auth</span>
+                      <span class="sub-spec">(JWT / RBAC)</span>
                     </div>
                   </div>
                 </div>
 
-                <!-- Cache Block -->
-                <div class="diag-node-sublayer node-cache">
-                  <div class="diag-connector-vertical">
-                    <svg width="12" height="20" viewBox="0 0 12 20" fill="none"><path d="M6 20V2M1 7l5-5 5 5" stroke="#ef4444" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/></svg>
+                <div class="swiss-sublayer-unit">
+                  <div class="sublayer-conn-arrow">
+                    <svg width="10" height="18" viewBox="0 0 10 18" fill="none"><path d="M5 18V2M1 6l4-4 4 4" stroke="#f87171" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"/></svg>
                   </div>
-                  <div class="diag-sub-card">
-                    <div class="diag-icon-box-small icon-red">
-                      <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2"><path d="M4 6h16M4 12h16M4 18h16"></path></svg>
+                  <div class="swiss-sub-card" data-node="cache">
+                    <div class="sub-icon-box icon-red">
+                      <svg width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M4 6h16M4 12h16M4 18h16"></path></svg>
                     </div>
                     <div>
-                      <span class="diag-sub-title">Cache</span>
-                      <span class="diag-sub-detail">(Redis)</span>
+                      <span class="sub-title">Cache</span>
+                      <span class="sub-spec">(Redis)</span>
                     </div>
                   </div>
                 </div>
 
-                <!-- External APIs Block -->
-                <div class="diag-node-sublayer node-external">
-                  <div class="diag-connector-vertical">
-                    <svg width="12" height="20" viewBox="0 0 12 20" fill="none"><path d="M6 20V2M1 7l5-5 5 5" stroke="#ffb703" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/></svg>
+                <div class="swiss-sublayer-unit">
+                  <div class="sublayer-conn-arrow">
+                    <svg width="10" height="18" viewBox="0 0 10 18" fill="none"><path d="M5 18V2M1 6l4-4 4 4" stroke="#fbbf24" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"/></svg>
                   </div>
-                  <div class="diag-sub-card">
-                    <div class="diag-icon-box-small icon-amber">
-                      <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2"><rect x="2" y="2" width="20" height="20" rx="3" ry="3"></rect><path d="M7 12h10M12 7v10"></path></svg>
+                  <div class="swiss-sub-card" data-node="apis">
+                    <div class="sub-icon-box icon-amber">
+                      <svg width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect x="2" y="2" width="20" height="20" rx="3" ry="3"></rect><path d="M7 12h10M12 7v10"></path></svg>
                     </div>
                     <div>
-                      <span class="diag-sub-title">External APIs</span>
-                      <span class="diag-sub-detail">(AWS / 3rd Party)</span>
+                      <span class="sub-title">External APIs</span>
+                      <span class="sub-spec">(AWS / 3rd Party)</span>
                     </div>
                   </div>
                 </div>
@@ -1112,98 +1135,94 @@
     </section>
 
     <!-- =========================================================================
-         8. PROBLEM SOLVING & DSA
+         8. PROBLEM SOLVING & DSA — SWISS TYPOGRAPHIC LEDGER
          ========================================================================= -->
-    <section class="section" id="dsa">
+    <section class="section swiss-section" id="dsa">
       <div class="container">
-        <div style="display: flex; align-items: flex-end; justify-content: space-between; margin-bottom: 2.5rem; flex-wrap: wrap; gap: 1rem;" data-reveal>
-          <div>
-            <div class="hud-tag">04 // PROBLEM SOLVING</div>
-            <h2 class="section-title">Data Structures &amp; Algorithmic Patterns</h2>
-            <p class="section-desc">
-              Practicing algorithms across multiple core DSA categories to build intuition for optimal time and space complexity.
-            </p>
+        
+        <div class="swiss-section-header" data-reveal>
+          <div class="swiss-meta-row">
+            <span class="swiss-section-num">04 // PROBLEM SOLVING</span>
+            <div style="display: flex; gap: 0.75rem;">
+              <a href="https://leetcode.com/u/jitus7453/" target="_blank" rel="noopener" class="swiss-btn-outline">LeetCode Profile &rarr;</a>
+              <a href="https://github.com/Jyoti-jitu/Leetcode" target="_blank" rel="noopener" class="swiss-btn-outline">Solutions Repo &rarr;</a>
+            </div>
           </div>
-          <div style="display: flex; gap: 0.85rem; flex-wrap: wrap;">
-            <a href="https://leetcode.com/u/jitus7453/" target="_blank" rel="noopener" class="btn-cyber-primary" style="font-size: 0.85rem; padding: 0.55rem 1.25rem;">
-              <span>LeetCode Profile &rarr;</span>
-            </a>
-            <a href="https://github.com/Jyoti-jitu/Leetcode" target="_blank" rel="noopener" class="btn-cyber-secondary" style="font-size: 0.85rem; padding: 0.55rem 1.25rem;">
-              <span>Solutions Repo &rarr;</span>
-            </a>
-          </div>
+          <h2 class="swiss-headline">Algorithmic Rigor &amp; Complexity Targets.</h2>
+          <p class="swiss-lead-sub">
+            Systematic pattern practice across core computer science paradigms to build intuition for optimal time and space complexity bounds.
+          </p>
         </div>
 
-        <div class="dsa-asymmetrical-grid">
-          <!-- Left: 19-Pattern Practice Matrix -->
-          <div class="dsa-matrix-card tilt-element" data-reveal>
-            <div class="matrix-card-header">
-              <span class="pod-header-glyph">&#9638;</span>
-              <span>19 Core Algorithmic Patterns Practiced</span>
-              <span class="pod-hud-tag" style="margin-left: auto;">[VERIFIED REPO]</span>
-            </div>
-            
-            <div class="dsa-patterns-tag-grid">
-              <span class="dsa-pattern-chip active">Array</span>
-              <span class="dsa-pattern-chip active">Hash Table</span>
-              <span class="dsa-pattern-chip active">Two Pointers</span>
-              <span class="dsa-pattern-chip active">Binary Search</span>
-              <span class="dsa-pattern-chip">Greedy</span>
-              <span class="dsa-pattern-chip">Dynamic Programming</span>
-              <span class="dsa-pattern-chip">Recursion</span>
-              <span class="dsa-pattern-chip">Memoization</span>
-              <span class="dsa-pattern-chip">Linked List</span>
-              <span class="dsa-pattern-chip">Stack</span>
-              <span class="dsa-pattern-chip">Monotonic Stack</span>
-              <span class="dsa-pattern-chip">Tree</span>
-              <span class="dsa-pattern-chip">BST</span>
-              <span class="dsa-pattern-chip">Binary Tree</span>
-              <span class="dsa-pattern-chip">Matrix</span>
-              <span class="dsa-pattern-chip">Prefix Sum</span>
-              <span class="dsa-pattern-chip">Sorting</span>
-              <span class="dsa-pattern-chip">String</span>
-              <span class="dsa-pattern-chip">Bit Manipulation</span>
+        <div class="swiss-dsa-grid">
+          
+          <!-- Left Column: 19-Pattern Tabular Ledger -->
+          <div class="swiss-dsa-matrix-card tilt-element" data-reveal>
+            <div class="dsa-ledger-header">
+              <span class="ledger-tag">CORE ALGORITHMIC PATTERNS</span>
+              <span class="ledger-count">19 PATTERNS PRACTICED</span>
             </div>
 
-            <div class="dsa-metrics-strip">
-              <div class="dsa-metric-cell">
-                <span class="dsa-metric-num">19</span>
-                <span class="dsa-metric-lbl">Algorithmic Categories</span>
+            <div class="swiss-pattern-ledger">
+              <div class="ledger-row"><span class="ledger-num">01</span><span class="ledger-name">Array</span><span class="ledger-badge">O(1) Access</span></div>
+              <div class="ledger-row"><span class="ledger-num">02</span><span class="ledger-name">Hash Table</span><span class="ledger-badge">O(1) Avg</span></div>
+              <div class="ledger-row"><span class="ledger-num">03</span><span class="ledger-name">Two Pointers</span><span class="ledger-badge">O(N) Optimal</span></div>
+              <div class="ledger-row"><span class="ledger-num">04</span><span class="ledger-name">Binary Search</span><span class="ledger-badge">O(log N)</span></div>
+              <div class="ledger-row"><span class="ledger-num">05</span><span class="ledger-name">Greedy Approach</span><span class="ledger-badge">Locally Optimal</span></div>
+              <div class="ledger-row"><span class="ledger-num">06</span><span class="ledger-name">Dynamic Programming</span><span class="ledger-badge">Memoized / Tabular</span></div>
+              <div class="ledger-row"><span class="ledger-num">07</span><span class="ledger-name">Recursion &amp; Backtracking</span><span class="ledger-badge">State Tree</span></div>
+              <div class="ledger-row"><span class="ledger-num">08</span><span class="ledger-name">Linked List</span><span class="ledger-badge">Pointer Mutation</span></div>
+              <div class="ledger-row"><span class="ledger-num">09</span><span class="ledger-name">Stack &amp; Monotonic Stack</span><span class="ledger-badge">LIFO / Next Greater</span></div>
+              <div class="ledger-row"><span class="ledger-num">10</span><span class="ledger-name">Tree &amp; Binary Search Tree</span><span class="ledger-badge">DFS / BFS Traversal</span></div>
+              <div class="ledger-row"><span class="ledger-num">11</span><span class="ledger-name">Matrix Operations</span><span class="ledger-badge">2D Traversal</span></div>
+              <div class="ledger-row"><span class="ledger-num">12</span><span class="ledger-name">Prefix Sum &amp; Sliding Window</span><span class="ledger-badge">Subarray Optimal</span></div>
+              <div class="ledger-row"><span class="ledger-num">13</span><span class="ledger-name">Sorting &amp; Two-Way Partition</span><span class="ledger-badge">O(N log N)</span></div>
+              <div class="ledger-row"><span class="ledger-num">14</span><span class="ledger-name">Bit Manipulation</span><span class="ledger-badge">Bitwise Tricks</span></div>
+            </div>
+
+            <div class="swiss-metrics-row">
+              <div class="swiss-metric-block">
+                <span class="sm-value">19</span>
+                <span class="sm-label">Algorithmic Categories</span>
               </div>
-              <div class="dsa-metric-cell">
-                <span class="dsa-metric-num">O(1)</span>
-                <span class="dsa-metric-lbl">Optimal Space Targets</span>
+              <div class="swiss-metric-block">
+                <span class="sm-value">O(1)</span>
+                <span class="sm-label">Target Space Bound</span>
               </div>
-              <div class="dsa-metric-cell">
-                <span class="dsa-metric-num">Daily</span>
-                <span class="dsa-metric-lbl">Practice Cadence</span>
+              <div class="swiss-metric-block">
+                <span class="sm-value">Daily</span>
+                <span class="sm-label">Practice Cadence</span>
               </div>
             </div>
           </div>
 
-          <!-- Right: Interactive Code Terminal Tab Viewer -->
-          <div class="dsa-code-terminal-box tilt-element" data-reveal>
-            <div class="dsa-tab-selector">
-              <button class="dsa-tab-btn active" data-snippet="lru">
+          <!-- Right Column: Swiss Code Terminal Tab Viewer -->
+          <div class="swiss-code-terminal tilt-element" data-reveal>
+            
+            <div class="terminal-tab-bar">
+              <button class="swiss-tab-btn active" data-snippet="lru">
+                <span class="tab-index">01</span>
                 <span>LRU_Cache.py</span>
-                <span class="tab-complexity-tag">O(1) GET/PUT</span>
+                <span class="tab-tag">O(1) GET/PUT</span>
               </button>
-              <button class="dsa-tab-btn" data-snippet="bsearch">
+              <button class="swiss-tab-btn" data-snippet="bsearch">
+                <span class="tab-index">02</span>
                 <span>Rotated_Search.py</span>
-                <span class="tab-complexity-tag">O(log N)</span>
+                <span class="tab-tag">O(log N)</span>
               </button>
-              <button class="dsa-tab-btn" data-snippet="twopointers">
+              <button class="swiss-tab-btn" data-snippet="twopointers">
+                <span class="tab-index">03</span>
                 <span>Two_Pointers.py</span>
-                <span class="tab-complexity-tag">O(N)</span>
+                <span class="tab-tag">O(N)</span>
               </button>
             </div>
 
-            <div class="dsa-code-header-bar">
-              <span id="dsaCodeTitle" class="dsa-file-name">LRUCache.py — Hash Map + Doubly Linked List</span>
-              <span id="dsaCodeComplexity" class="dsa-complexity-badge">O(1) Time • O(Capacity) Space</span>
+            <div class="terminal-meta-header">
+              <span id="dsaCodeTitle" class="terminal-file-title">LRUCache.py — Hash Map + Doubly Linked List</span>
+              <span id="dsaCodeComplexity" class="terminal-complexity-pill">O(1) Time &bull; O(Capacity) Space</span>
             </div>
 
-            <pre class="dsa-code-view"><code id="dsaCodeDisplay">class Node:
+            <pre class="terminal-code-body"><code id="dsaCodeDisplay">class Node:
     def __init__(self, key: int, val: int):
         self.key, self.val = key, val
         self.prev = self.next = None
@@ -1251,96 +1270,97 @@ class LRUCache:
     </section>
 
     <!-- =========================================================================
-         9. EDUCATION & ACTIVE EXPLORATION
+         9. EDUCATION & ROADMAP — SWISS EDITORIAL GRID
          ========================================================================= -->
-    <section class="section" id="education">
+    <section class="section swiss-section" id="education">
       <div class="container">
         
-        <div class="education-grid-split">
+        <div class="swiss-split-layout">
           
-          <!-- Column 1: Academic Foundation -->
-          <div class="edu-card-editorial tilt-element" data-reveal>
-            <div class="hud-tag">05 // EDUCATION</div>
-            <h2 class="section-title">Academic Background</h2>
-            <p class="section-desc">Formal computer science training paired with intensive project-based engineering.</p>
+          <!-- Column 1: Academic Credentials -->
+          <div class="swiss-column-block tilt-element" data-reveal>
+            <div class="swiss-meta-row">
+              <span class="swiss-section-num">05 // ACADEMIC FOUNDATION</span>
+              <span class="swiss-status-pill">GRADUATION 2027</span>
+            </div>
+            <h2 class="swiss-headline">Academic Credentials.</h2>
+            <p class="swiss-lead-sub">Formal computer science training paired with intensive project-based engineering.</p>
 
-            <div class="edu-timeline-box">
-              <div class="edu-degree-block primary-degree">
-                <div class="edu-year-tag">2023 &mdash; 2027</div>
-                <h3 class="edu-degree-name">B.Tech in Computer Science &amp; Engineering</h3>
-                <div class="edu-institution">GITA Autonomous College, Bhubaneswar</div>
-                <div class="edu-score-pill">
-                  <span class="score-highlight">8.6 CGPA</span>
-                  <span>&bull; Full-Time Undergraduate</span>
-                </div>
-                <p class="edu-coursework">
-                  <strong>Key Coursework:</strong> Data Structures &amp; Algorithms, Object-Oriented Programming, Database Management Systems, Operating Systems, Computer Networks.
-                </p>
+            <div class="swiss-credential-card primary-card">
+              <div class="cred-year-tag">2023 &mdash; 2027</div>
+              <h3 class="cred-degree-title">B.Tech in Computer Science &amp; Engineering</h3>
+              <div class="cred-school-name">GITA Autonomous College, Bhubaneswar</div>
+              <div class="cred-grade-pill">
+                <span class="grade-score">8.6 CGPA</span>
+                <span class="grade-type">&bull; Full-Time Undergraduate</span>
               </div>
+              <p class="cred-coursework-text">
+                <strong>Core Disciplines:</strong> Data Structures &amp; Algorithms, Object-Oriented Programming, Database Management Systems, Operating Systems, Computer Networks.
+              </p>
+            </div>
 
-              <div class="edu-degree-block secondary-degree">
-                <div class="edu-year-tag">2021 &mdash; 2023</div>
-                <h4 class="edu-sub-degree-name">Higher Secondary Certificate (Class XII &bull; Science)</h4>
-                <div class="edu-sub-institution">NRI International School, Bhadrak &bull; 69.9%</div>
-              </div>
+            <div class="swiss-credential-card">
+              <div class="cred-year-tag">2021 &mdash; 2023</div>
+              <h4 class="cred-sub-title">Higher Secondary Certificate (Class XII &bull; Science)</h4>
+              <div class="cred-sub-school">NRI International School, Bhadrak &bull; 69.9%</div>
+            </div>
 
-              <div class="edu-degree-block secondary-degree">
-                <div class="edu-year-tag">2020 &mdash; 2021</div>
-                <h4 class="edu-sub-degree-name">Secondary School Certificate (Class X)</h4>
-                <div class="edu-sub-institution">Royal Public School Bidya Bihar, Balasore &bull; 61.2%</div>
-              </div>
+            <div class="swiss-credential-card">
+              <div class="cred-year-tag">2020 &mdash; 2021</div>
+              <h4 class="cred-sub-title">Secondary School Certificate (Class X)</h4>
+              <div class="cred-sub-school">Royal Public School Bidya Bihar, Balasore &bull; 61.2%</div>
             </div>
           </div>
 
-          <!-- Column 2: Currently Building & Exploring -->
-          <div class="roadmap-card-editorial tilt-element" data-reveal>
-            <div class="hud-tag">ROADMAP // FOCUS</div>
-            <h2 class="section-title">Currently Building &amp; Exploring</h2>
-            <p class="section-desc">Transparent engineering roadmap across shipped, active, and upcoming systems.</p>
-
-            <div class="roadmap-stages-wrap">
-              
-              <!-- Stage 1: Completed -->
-              <div class="roadmap-stage-block">
-                <div class="stage-label status-completed">
-                  <span class="stage-dot dot-green"></span>
-                  <span>COMPLETED &amp; SHIPPED</span>
-                </div>
-                <div class="stage-pills">
-                  <span class="stage-pill">FluxChat Distributed WebSockets</span>
-                  <span class="stage-pill">RentHub RBAC &amp; Razorpay</span>
-                  <span class="stage-pill">Gemini RAG Vector Ingestion</span>
-                  <span class="stage-pill">Personal Vault Crypto Storage</span>
-                </div>
-              </div>
-
-              <!-- Stage 2: Building -->
-              <div class="roadmap-stage-block">
-                <div class="stage-label status-building">
-                  <span class="stage-dot dot-cyan"></span>
-                  <span>ACTIVELY BUILDING</span>
-                </div>
-                <div class="stage-pills">
-                  <span class="stage-pill">Multi-Agent GenAI Autonomous Pipelines</span>
-                  <span class="stage-pill">WebRTC Mesh Audio/Video Rooms</span>
-                  <span class="stage-pill">High-Throughput Redis Rate Limiting</span>
-                </div>
-              </div>
-
-              <!-- Stage 3: Exploring -->
-              <div class="roadmap-stage-block">
-                <div class="stage-label status-exploring">
-                  <span class="stage-dot dot-indigo"></span>
-                  <span>EXPLORING &amp; RESEARCHING</span>
-                </div>
-                <div class="stage-pills">
-                  <span class="stage-pill">Kubernetes Multi-Cluster Orchestration</span>
-                  <span class="stage-pill">Distributed Consensus (Raft / Paxos)</span>
-                  <span class="stage-pill">Low-Latency Systems in Rust &amp; Go</span>
-                </div>
-              </div>
-
+          <!-- Column 2: System Roadmap -->
+          <div class="swiss-column-block tilt-element" data-reveal>
+            <div class="swiss-meta-row">
+              <span class="swiss-section-num">06 // SYSTEM ROADMAP</span>
+              <span class="swiss-status-pill">LIFECYCLE STATUS</span>
             </div>
+            <h2 class="swiss-headline">Currently Building &amp; Exploring.</h2>
+            <p class="swiss-lead-sub">Transparent engineering roadmap across completed, active, and upcoming systems.</p>
+
+            <!-- Phase 1 -->
+            <div class="swiss-phase-card">
+              <div class="phase-header status-green">
+                <span class="phase-dot dot-green"></span>
+                <span class="phase-title">PHASE 01 // COMPLETED &amp; SHIPPED</span>
+              </div>
+              <div class="phase-tags-wrap">
+                <span class="phase-chip">FluxChat Distributed WebSockets</span>
+                <span class="phase-chip">RentHub RBAC &amp; Razorpay</span>
+                <span class="phase-chip">Gemini RAG Vector Ingestion</span>
+                <span class="phase-chip">Personal Vault Crypto Storage</span>
+              </div>
+            </div>
+
+            <!-- Phase 2 -->
+            <div class="swiss-phase-card">
+              <div class="phase-header status-cyan">
+                <span class="phase-dot dot-cyan"></span>
+                <span class="phase-title">PHASE 02 // ACTIVELY IN DEVELOPMENT</span>
+              </div>
+              <div class="phase-tags-wrap">
+                <span class="phase-chip">Multi-Agent GenAI Autonomous Pipelines</span>
+                <span class="phase-chip">WebRTC Mesh Audio/Video Rooms</span>
+                <span class="phase-chip">High-Throughput Redis Rate Limiting</span>
+              </div>
+            </div>
+
+            <!-- Phase 3 -->
+            <div class="swiss-phase-card">
+              <div class="phase-header status-indigo">
+                <span class="phase-dot dot-indigo"></span>
+                <span class="phase-title">PHASE 03 // RESEARCH &amp; EXPLORATION</span>
+              </div>
+              <div class="phase-tags-wrap">
+                <span class="phase-chip">Kubernetes Multi-Cluster Orchestration</span>
+                <span class="phase-chip">Distributed Consensus (Raft / Paxos)</span>
+                <span class="phase-chip">Low-Latency Systems in Rust &amp; Go</span>
+              </div>
+            </div>
+
           </div>
 
         </div>
@@ -1349,114 +1369,121 @@ class LRUCache:
     </section>
 
     <!-- =========================================================================
-         10. CONTACT SECTION
+         10. CONTACT SECTION — SWISS EDITORIAL COMPOSITION
          ========================================================================= -->
-    <section class="section" id="contact">
+    <section class="section swiss-section" id="contact">
       <div class="container">
-        <div class="contact-editorial-container tilt-element" data-reveal>
+        
+        <div class="swiss-contact-box tilt-element" data-reveal>
           
-          <div class="contact-left-col">
-            <div class="hud-tag">06 // DIRECT TRANSMISSION</div>
-            <h2 class="contact-headline">LET'S BUILD SOMETHING.</h2>
-            <p class="contact-body">
-              Looking for a full-stack engineer who builds scalable systems, microservices, and AI-powered platforms? Let's connect.
+          <!-- Left Column: Direct Links & Statement -->
+          <div class="swiss-contact-left">
+            <div class="swiss-meta-row">
+              <span class="swiss-section-num">07 // DIRECT TRANSMISSION</span>
+              <span class="swiss-status-pill"><span class="swiss-dot-live"></span>ONLINE &bull; ODISHA, INDIA</span>
+            </div>
+            <h2 class="swiss-contact-title">Let's build systems together.</h2>
+            <p class="swiss-contact-desc">
+              Looking for a full-stack engineer who builds scalable systems, microservices, and AI-powered platforms? I am open to software engineering internships, full-time positions, and technical collaborations.
             </p>
 
-            <div class="contact-links-stack">
-              <a href="mailto:parhijyotiswarup@gmail.com" class="contact-link-row">
-                <span class="contact-link-icon">
-                  <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M4 4h16c1.1 0 2 .9 2 2v12c0 1.1-.9 2-2 2H4c-1.1 0-2-.9-2-2V6c0-1.1.9-2 2-2z"></path><polyline points="22,6 12,13 2,6"></polyline></svg>
-                </span>
-                <div>
-                  <span class="contact-link-type">EMAIL</span>
-                  <span class="contact-link-val">parhijyotiswarup@gmail.com</span>
+            <div class="swiss-channels-list">
+              <a href="mailto:parhijyotiswarup@gmail.com" class="swiss-channel-item">
+                <span class="ch-idx">01</span>
+                <div class="ch-info">
+                  <span class="ch-type">EMAIL</span>
+                  <span class="ch-val">parhijyotiswarup@gmail.com</span>
                 </div>
+                <span class="ch-arrow">&nearr;</span>
               </a>
 
-              <a href="https://www.linkedin.com/in/jyoti-swarup/" target="_blank" rel="noopener" class="contact-link-row">
-                <span class="contact-link-icon">
-                  <svg width="18" height="18" viewBox="0 0 24 24" fill="currentColor"><path d="M19 3a2 2 0 0 1 2 2v14a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2V5a2 2 0 0 1 2-2h14m-.5 15.5v-5.3a3.26 3.26 0 0 0-3.26-3.26c-.85 0-1.84.52-2.28 1.3v-1.11h-2.79v8.37h2.79v-4.93c0-.77.62-1.4 1.39-1.4a1.4 1.4 0 0 1 1.4 1.4v4.93h2.75M6.46 10.9v8.37H9.2V10.9H6.46M7.83 6.6a1.64 1.64 0 1 0 0 3.28 1.64 1.64 0 0 0 0-3.28z"/></svg>
-                </span>
-                <div>
-                  <span class="contact-link-type">LINKEDIN</span>
-                  <span class="contact-link-val">linkedin.com/in/jyoti-swarup</span>
+              <a href="https://www.linkedin.com/in/jyoti-swarup/" target="_blank" rel="noopener" class="swiss-channel-item">
+                <span class="ch-idx">02</span>
+                <div class="ch-info">
+                  <span class="ch-type">LINKEDIN</span>
+                  <span class="ch-val">linkedin.com/in/jyoti-swarup</span>
                 </div>
+                <span class="ch-arrow">&nearr;</span>
               </a>
 
-              <a href="https://github.com/Jyoti-jitu" target="_blank" rel="noopener" class="contact-link-row">
-                <span class="contact-link-icon">
-                  <svg width="18" height="18" viewBox="0 0 24 24" fill="currentColor"><path d="M12 2C6.477 2 2 6.484 2 12.017c0 4.425 2.865 8.18 6.839 9.504.5.092.682-.217.682-.483 0-.237-.008-.868-.013-1.703-2.782.605-3.369-1.343-3.369-1.343-.454-1.158-1.11-1.466-1.11-1.466-.908-.62.069-.608.069-.608 1.003.07 1.53 1.032 1.53 1.032.892 1.53 2.341 1.088 2.91.832.092-.647.35-1.088.636-1.338-2.22-.253-4.555-1.113-4.555-4.951 0-1.093.39-1.988 1.029-2.688-.103-.253-.446-1.272.098-2.65 0 0 .84-.27 2.75 1.026A9.564 9.564 0 0112 6.844c.85.004 1.705.115 2.504.337 1.909-1.296 2.747-1.027 2.747-1.027.546 1.379.202 2.398.1 2.651.64.7 1.028 1.595 1.028 2.688 0 3.848-2.339 4.695-4.566 4.943.359.309.678.92.678 1.855 0 1.338-.012 2.419-.012 2.747 0 .268.18.58.688.482A10.019 10.019 0 0022 12.017C22 6.484 17.522 2 12 2z"/></svg>
-                </span>
-                <div>
-                  <span class="contact-link-type">GITHUB</span>
-                  <span class="contact-link-val">github.com/Jyoti-jitu</span>
+              <a href="https://github.com/Jyoti-jitu" target="_blank" rel="noopener" class="swiss-channel-item">
+                <span class="ch-idx">03</span>
+                <div class="ch-info">
+                  <span class="ch-type">GITHUB</span>
+                  <span class="ch-val">github.com/Jyoti-jitu</span>
                 </div>
+                <span class="ch-arrow">&nearr;</span>
               </a>
 
-              <a href="https://leetcode.com/u/jitus7453/" target="_blank" rel="noopener" class="contact-link-row">
-                <span class="contact-link-icon">
-                  <svg width="18" height="18" viewBox="0 0 24 24" fill="currentColor"><path d="M13.483 0a1.374 1.374 0 0 0-.961.438L7.116 6.226l-3.854 4.126a5.266 5.266 0 0 0-1.209 2.104 5.35 5.35 0 0 0-.125.513 5.527 5.527 0 0 0 .062 2.362 5.83 5.83 0 0 0 .349 1.017 5.938 5.938 0 0 0 1.271 1.818l4.277 4.193.039.038c2.248 2.165 5.852 2.133 8.063-.074l2.396-2.392c.54-.54.54-1.414.003-1.955a1.378 1.378 0 0 0-1.951-.003l-2.396 2.392a3.021 3.021 0 0 1-4.205.038l-.02-.019-4.276-4.193c-.652-.64-.972-1.469-.948-2.263a2.68 2.68 0 0 1 .066-.523 2.545 2.545 0 0 1 .619-1.164L9.13 8.114c1.058-1.134 3.204-1.27 4.43-.278l3.501 2.831c.593.48 1.461.387 1.94-.207a1.384 1.384 0 0 0-.207-1.943l-3.5-2.831c-.8-.647-1.766-1.045-2.774-1.202l2.015-2.158A1.384 1.384 0 0 0 13.483 0zm-2.866 12.815a1.38 1.38 0 0 0-1.38 1.382 1.38 1.38 0 0 0 1.38 1.382H20.79a1.38 1.38 0 0 0 1.38-1.382 1.38 1.38 0 0 0-1.38-1.382H10.617z"/></svg>
-                </span>
-                <div>
-                  <span class="contact-link-type">LEETCODE</span>
-                  <span class="contact-link-val">leetcode.com/u/jitus7453</span>
+              <a href="https://leetcode.com/u/jitus7453/" target="_blank" rel="noopener" class="swiss-channel-item">
+                <span class="ch-idx">04</span>
+                <div class="ch-info">
+                  <span class="ch-type">LEETCODE</span>
+                  <span class="ch-val">leetcode.com/u/jitus7453</span>
                 </div>
+                <span class="ch-arrow">&nearr;</span>
               </a>
             </div>
           </div>
 
-          <!-- Contact Form -->
-          <div class="contact-right-col">
-            <form class="editorial-contact-form" id="contactForm">
-              <div class="form-field-unit">
-                <label for="contactName" class="form-field-label">NAME</label>
-                <input type="text" id="contactName" name="name" class="form-field-input" placeholder="Your Name or Organization" required />
+          <!-- Right Column: Swiss Minimalist Form -->
+          <div class="swiss-contact-right">
+            <form class="swiss-form" id="contactForm">
+              <div class="swiss-form-group">
+                <label for="contactName" class="swiss-form-label">01 // YOUR NAME OR ORGANIZATION</label>
+                <input type="text" id="contactName" name="name" class="swiss-form-input" placeholder="e.g. Sarah Connor / Anthropic" required />
               </div>
 
-              <div class="form-field-unit">
-                <label for="contactEmail" class="form-field-label">EMAIL</label>
-                <input type="email" id="contactEmail" name="email" class="form-field-input" placeholder="your.email@company.com" required />
+              <div class="swiss-form-group">
+                <label for="contactEmail" class="swiss-form-label">02 // YOUR EMAIL ADDRESS</label>
+                <input type="email" id="contactEmail" name="email" class="swiss-form-input" placeholder="sarah@company.com" required />
               </div>
 
-              <div class="form-field-unit">
-                <label for="contactMessage" class="form-field-label">MESSAGE</label>
-                <textarea id="contactMessage" name="message" class="form-field-textarea" placeholder="Tell me about your project, team role, or system design challenge..." required></textarea>
+              <div class="swiss-form-group">
+                <label for="contactMessage" class="swiss-form-label">03 // TRANSMISSION MESSAGE</label>
+                <textarea id="contactMessage" name="message" class="swiss-form-textarea" placeholder="Tell me about your team role, architecture challenge, or project vision..." required></textarea>
               </div>
 
-              <div id="contactAlert" class="contact-alert-msg" style="display: none;"></div>
+              <div id="contactAlert" class="swiss-form-alert" style="display: none;"></div>
 
-              <button type="submit" class="btn-cyber-primary" style="width: 100%; justify-content: center; padding: 0.85rem;">
-                <span>DISPATCH MESSAGE &rarr;</span>
+              <button type="submit" class="swiss-submit-btn">
+                <span>DISPATCH TRANSMISSION</span>
+                <span>&rarr;</span>
               </button>
             </form>
           </div>
 
         </div>
+
       </div>
     </section>
   </main>
 
   <!-- =========================================================================
-       FOOTER
+       FOOTER — SWISS COLOPHON
        ========================================================================= -->
-  <footer class="site-footer">
-    <div class="container footer-inner">
-      <div class="footer-brand-col">
-        <div class="footer-brand-title">JS &bull; JYOTI SWARUP</div>
-        <div class="footer-brand-tagline">DEVELOPER &bull; BUILDER &bull; LEARNER</div>
+  <footer class="site-footer swiss-footer">
+    <div class="container swiss-footer-inner">
+      
+      <div class="colophon-block brand-block">
+        <div class="colophon-title">JS &bull; JYOTI SWARUP PARHI</div>
+        <div class="colophon-sub">FULL-STACK DEVELOPER &bull; SYSTEMS BUILDER</div>
+        <div class="colophon-loc">BHUBANESWAR, ODISHA, INDIA</div>
       </div>
 
-      <div class="footer-statement-col">
-        <span class="footer-statement">MADE WITH PASSION. BUILT FOR IMPACT.</span>
-        <span class="footer-copy">&copy; <span id="currentYear">2026</span> Jyoti Swarup Parhi. All rights reserved.</span>
+      <div class="colophon-block statement-block">
+        <div class="colophon-statement">DESIGNED IN SWISS TYPOGRAPHIC STYLE</div>
+        <div class="colophon-rights">&copy; <span id="currentYear">2026</span> Jyoti Swarup Parhi. All rights reserved.</div>
+        <div class="colophon-status"><span class="swiss-dot-live"></span> ALL SYSTEMS OPERATIONAL</div>
       </div>
 
-      <div class="footer-social-col">
-        <a href="https://github.com/Jyoti-jitu" target="_blank" rel="noopener" class="footer-social-link" title="GitHub">GitHub</a>
-        <a href="https://www.linkedin.com/in/jyoti-swarup/" target="_blank" rel="noopener" class="footer-social-link" title="LinkedIn">LinkedIn</a>
-        <a href="https://leetcode.com/u/jitus7453/" target="_blank" rel="noopener" class="footer-social-link" title="LeetCode">LeetCode</a>
-        <a href="mailto:parhijyotiswarup@gmail.com" class="footer-social-link" title="Email">Email</a>
+      <div class="colophon-block links-block">
+        <a href="https://github.com/Jyoti-jitu" target="_blank" rel="noopener" class="colophon-link">GitHub</a>
+        <a href="https://www.linkedin.com/in/jyoti-swarup/" target="_blank" rel="noopener" class="colophon-link">LinkedIn</a>
+        <a href="https://leetcode.com/u/jitus7453/" target="_blank" rel="noopener" class="colophon-link">LeetCode</a>
+        <a href="mailto:parhijyotiswarup@gmail.com" class="colophon-link">Email</a>
       </div>
+
     </div>
   </footer>
 

@@ -774,7 +774,7 @@ class LRUCache:
 };
 
 function initDSACodeTabs() {
-  const tabs = document.querySelectorAll('.dsa-tab-btn');
+  const tabs = document.querySelectorAll('.dsa-tab-btn, .swiss-tab-btn');
   const codeDisplay = document.getElementById('dsaCodeDisplay');
   const codeTitle = document.getElementById('dsaCodeTitle');
   const codeComplexity = document.getElementById('dsaCodeComplexity');
@@ -819,7 +819,7 @@ function initDSACodeTabs() {
    11. INTERACTIVE MICROSERVICES ARCHITECTURE INSPECTOR
    ========================================================================== */
 function initArchitectureInspector() {
-  const nodes = document.querySelectorAll('.diag-node, .diag-sub-card');
+  const nodes = document.querySelectorAll('.diag-node, .diag-sub-card, .swiss-node, .swiss-sub-card');
   if (nodes.length === 0) return;
 
   const nodeSpecs = {
@@ -827,7 +827,10 @@ function initArchitectureInspector() {
     frontend: "Edge SSR Layer: Next.js 16 with optimistic client state updates, streaming SSR, and edge hydration.",
     gateway: "Unified Gateway: Ingestion proxy, SSL termination, JWT bearer verification, and Redis token bucket rate limiting.",
     services: "Domain Microservices: FastAPI and Node.js decoupled event-driven services communicating over async channels.",
-    database: "Distributed Persistence: PostgreSQL for ACID relational data, MongoDB for chats, and ChromaDB for vector embeddings."
+    database: "Distributed Persistence: PostgreSQL for ACID relational data, MongoDB for chats, and ChromaDB for vector embeddings.",
+    auth: "Authentication Subsystem: Stateless cryptographic JWT verification with RBAC permission scopes.",
+    cache: "In-Memory Caching Sublayer: Redis cluster delivering sub-millisecond query caches and atomic token buckets.",
+    apis: "External Ecosystem Integrations: Fault-tolerant outbound HTTP adapters with circuit breakers and fallback retry queues."
   };
 
   nodes.forEach((node) => {
@@ -1009,7 +1012,7 @@ function initContactForm() {
     if (!name || !email || !message) {
       if (alertBox) {
         alertBox.textContent = 'Please populate all fields before dispatching transmission.';
-        alertBox.className = 'contact-alert error';
+        alertBox.className = 'swiss-form-alert error';
         alertBox.style.display = 'block';
       }
       return;
@@ -1022,7 +1025,7 @@ function initContactForm() {
 
     if (alertBox) {
       alertBox.textContent = 'Opening default email client... Thank you for reaching out!';
-      alertBox.className = 'contact-alert success';
+      alertBox.className = 'swiss-form-alert success';
       alertBox.style.display = 'block';
     }
 
