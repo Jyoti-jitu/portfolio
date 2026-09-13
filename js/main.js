@@ -747,68 +747,46 @@ function initDSACodeTabs() {
    11. INTERACTIVE MICROSERVICES ARCHITECTURE INSPECTOR
    ========================================================================== */
 function initArchitectureInspector() {
-  const nodeCards = document.querySelectorAll('.arch-node-card');
-  const panel = document.getElementById('archInspectorPanel');
-  const panelTitle = document.getElementById('archPanelTitle');
-  const panelDesc = document.getElementById('archPanelDesc');
-  const panelTech = document.getElementById('archPanelTech');
-  const panelRole = document.getElementById('archPanelRole');
+  const nodes = document.querySelectorAll('.diag-node, .diag-sub-card');
+  if (nodes.length === 0) return;
 
-  if (!panel || nodeCards.length === 0) return;
-
-  const nodeDetails = {
-    user: {
-      title: "Client & Web Applications",
-      role: "Traffic Origin & Interface Layer",
-      desc: "Web visitors, mobile clients, and external consumer apps initiating authenticated HTTP/REST, WebSocket, and SSE connections.",
-      tech: "React 19, Next.js, WebSockets, Tailwind, HTML5"
-    },
-    frontend: {
-      title: "Next.js / React Edge Frontend",
-      role: "Client Presentation & SSR Delivery",
-      desc: "Server-side rendered (SSR) React frontends deployed on edge networks with client-side state hydration and optimistic UI updates.",
-      tech: "Next.js App Router, React Context, TailwindCSS, Zod validation"
-    },
-    gateway: {
-      title: "Unified API Gateway",
-      role: "Traffic Ingestion, Reverse Proxy & Rate Limiting",
-      desc: "Single entry point terminating SSL, validating JWT tokens, managing burst rate limits via Redis token buckets, and proxying downstream to microservices.",
-      tech: "Nginx / FastAPI Gateway, Redis Token Bucket, CORS, SSL termination"
-    },
-    services: {
-      title: "Domain Microservices Cluster",
-      role: "Business Logic, Auth, & GenAI Pipelines",
-      desc: "Decoupled microservice containers running independently. Includes Auth service, Real-Time Chat WebSocket worker, Rental Booking engine, and Gemini RAG pipeline.",
-      tech: "FastAPI, Node.js, Express, Python 3.12, Docker, Pydantic"
-    },
-    db: {
-      title: "Distributed Data Stores",
-      role: "Persistent Storage, Vector Indexes, & High-Speed Cache",
-      desc: "Hybrid database architecture: PostgreSQL for ACID transactions, MongoDB for unstructured chats, ChromaDB for vector cosine similarities, and Redis for 1ms caching.",
-      tech: "PostgreSQL, MongoDB Atlas, ChromaDB Vector DB, Redis Cluster"
-    }
+  const nodeSpecs = {
+    user: "Traffic Origin: Client browsers and native mobile applications initiating HTTPS/WSS connections.",
+    frontend: "Edge SSR Layer: Next.js 16 with optimistic client state updates, streaming SSR, and edge hydration.",
+    gateway: "Unified Gateway: Ingestion proxy, SSL termination, JWT bearer verification, and Redis token bucket rate limiting.",
+    services: "Domain Microservices: FastAPI and Node.js decoupled event-driven services communicating over async channels.",
+    database: "Distributed Persistence: PostgreSQL for ACID relational data, MongoDB for chats, and ChromaDB for vector embeddings."
   };
 
-  nodeCards.forEach((card) => {
-    card.addEventListener('click', () => {
-      nodeCards.forEach((c) => c.classList.remove('active-node'));
-      card.classList.add('active-node');
-
-      const nodeKey = card.dataset.node;
-      const data = nodeDetails[nodeKey];
-
-      if (data) {
-        panel.style.opacity = '0';
-        setTimeout(() => {
-          if (panelTitle) panelTitle.textContent = data.title;
-          if (panelRole) panelRole.textContent = data.role;
-          if (panelDesc) panelDesc.textContent = data.desc;
-          if (panelTech) panelTech.textContent = data.tech;
-          panel.style.opacity = '1';
-        }, 150);
+  nodes.forEach((node) => {
+    node.addEventListener('click', () => {
+      nodes.forEach((n) => n.classList.remove('active-node'));
+      node.classList.add('active-node');
+      const key = node.dataset.node;
+      if (key && nodeSpecs[key]) {
+        showToast(nodeSpecs[key]);
       }
     });
   });
+}
+
+function showToast(message) {
+  const outlet = document.getElementById('toastOutlet');
+  if (!outlet) return;
+
+  const toast = document.createElement('div');
+  toast.className = 'toast-item';
+  toast.innerHTML = `<span style="color:var(--cyber-cyan);font-family:var(--font-mono);font-size:0.75rem;font-weight:700;">SYSTEM //</span> <span>${message}</span>`;
+  outlet.appendChild(toast);
+
+  requestAnimationFrame(() => {
+    toast.classList.add('show');
+  });
+
+  setTimeout(() => {
+    toast.classList.remove('show');
+    setTimeout(() => toast.remove(), 400);
+  }, 4000);
 }
 
 /* ==========================================================================
@@ -875,134 +853,57 @@ function initScrollSpy() {
 /* ==========================================================================
    14. PROJECT DETAIL MODAL
    ========================================================================== */
-const PROJECT_MODAL_DATA = {
-  fluxchat: {
-    title: "FluxChat — Real-Time Chat & Collaboration Platform",
-    category: "Distributed Full-Stack Application",
-    metrics: "Sub-50ms latency • 10k concurrent connections • WebSockets",
-    overview: "Production-ready real-time communication platform architected as a set of distributed microservices. Features instant text messaging, live audio/video rooms using WebRTC, channels, thread replies, and JWT authenticated private rooms.",
-    architecture: [
-      "Client Layer: Next.js 16 with React 19 optimistic state updates and WebSocket subscriptions",
-      "API Gateway: Reverse proxy terminating TLS and enforcing IP token-bucket rate limits",
-      "WebSocket Worker: Async FastAPI service broadcasting room events to subscribed clients",
-      "Data Layer: MongoDB for conversation logs and Redis pub/sub for cross-node socket broadcasting"
-    ],
-    tech: ["Next.js", "React 19", "FastAPI", "MongoDB", "Redis", "WebSockets", "Docker"],
-    github: "https://github.com/Jyoti-jitu",
-    live: "https://github.com/Jyoti-jitu"
-  },
-  renthub: {
-    title: "RentHub — Multi-Tenant Vehicle Rental Platform",
-    category: "Full-Stack Web & Booking System",
-    metrics: "100% ACID booking concurrency • Razorpay Webhooks • Multi-tier RBAC",
-    overview: "Enterprise-grade vehicle rental and fleet management platform. Allows customers to browse, filter, reserve, and pay for vehicles, while providing agency owners with fleet metrics, pricing rules, and rental approvals.",
-    architecture: [
-      "Frontend: React with responsive dashboard layout, search filters, and vehicle detail views",
-      "Backend: Node.js / Express REST API implementing strict schema validation with Zod",
-      "Database: PostgreSQL with row-level locks preventing double-booking of vehicles",
-      "Payments: Integrated Razorpay webhook handlers with automated idempotency keys"
-    ],
-    tech: ["React", "Node.js", "Express", "PostgreSQL", "Razorpay", "JWT", "Docker"],
-    github: "https://github.com/Jyoti-jitu",
-    live: "https://github.com/Jyoti-jitu"
-  },
-  rag: {
-    title: "Gemini RAG Studio — Production RAG Engine",
-    category: "Generative AI & Semantic Vector Search",
-    metrics: "Cosine similarity search • Multi-format parsing • 98% factual precision",
-    overview: "End-to-end Retrieval-Augmented Generation application. Ingests PDFs, markdown files, and technical documentation, computes high-dimensional vector embeddings, and performs semantic query matching with grounded responses via Google Gemini.",
-    architecture: [
-      "Ingestion Pipeline: Document chunker with recursive character overlap and token counting",
-      "Embedding Engine: Google Gemini text-embedding models with batch vector generation",
-      "Vector Storage: ChromaDB vector store running local cosine similarity queries",
-      "Generation Service: FastAPI orchestration layer injecting retrieved context into prompts"
-    ],
-    tech: ["Python", "FastAPI", "Google Gemini", "ChromaDB", "LangChain", "Docker"],
-    github: "https://github.com/Jyoti-jitu",
-    live: "https://github.com/Jyoti-jitu"
-  },
-  vault: {
-    title: "Personal Vault — Secure Digital Asset Management",
-    category: "Security & Cloud Storage Architecture",
-    metrics: "Client-side AES-256-GCM • Zero-knowledge auth • Supabase Row Security",
-    overview: "Security-hardened cloud storage solution for sensitive personal assets, documents, and credentials. Implements client-side client cryptographic key derivation so zero plaintext data ever reaches the storage backend.",
-    architecture: [
-      "Encryption Layer: Web Crypto API client-side AES-GCM encryption before payload upload",
-      "Auth: Supabase authentication with Argon2 password hashing and 2FA support",
-      "Storage: Encrypted blob storage with presigned URLs and granular row-level policies",
-      "Access Control: Automated session revocation upon suspicious IP or user-agent change"
-    ],
-    tech: ["React", "Node.js", "Supabase", "PostgreSQL", "Web Crypto API", "TailwindCSS"],
-    github: "https://github.com/Jyoti-jitu",
-    live: "https://github.com/Jyoti-jitu"
-  }
-};
-
 function initProjectModal() {
-  const modal = document.getElementById('projectModal');
-  const closeBtn = document.getElementById('closeModalBtn');
-  const modalBody = document.getElementById('modalBody');
+  const modal = document.getElementById('caseStudyModal');
+  const closeBtn = document.getElementById('modalCloseTrigger');
+  const closeBtnBottom = document.getElementById('modalCloseBtnBottom');
+  const modalImg = document.getElementById('modalImg');
+  const modalYear = document.getElementById('modalYear');
+  const modalCategory = document.getElementById('modalCategory');
+  const modalTitle = document.getElementById('modalTitle');
+  const modalSubtitle = document.getElementById('modalSubtitle');
+  const modalDesc = document.getElementById('modalDesc');
+  const modalFeaturesList = document.getElementById('modalFeaturesList');
+  const modalGithubBtn = document.getElementById('modalGithubBtn');
   const cards = document.querySelectorAll('.project-hologram-card');
 
-  if (!modal || !modalBody) return;
+  if (!modal) return;
 
-  function openModal(projectId) {
-    const data = PROJECT_MODAL_DATA[projectId];
-    if (!data) return;
+  function openModalFromCard(card) {
+    if (modalImg && card.dataset.image) modalImg.src = card.dataset.image;
+    if (modalYear && card.dataset.year) modalYear.textContent = card.dataset.year;
+    if (modalCategory && card.dataset.category) modalCategory.textContent = card.dataset.category;
+    if (modalTitle && card.dataset.title) modalTitle.textContent = card.dataset.title;
+    if (modalSubtitle && card.dataset.subtitle) modalSubtitle.textContent = card.dataset.subtitle;
+    if (modalDesc && card.dataset.desc) modalDesc.textContent = card.dataset.desc;
+    if (modalGithubBtn && card.dataset.github) modalGithubBtn.href = card.dataset.github;
 
-    modalBody.innerHTML = `
-      <div class="modal-project-header">
-        <span class="modal-category">${data.category}</span>
-        <h2 class="modal-title">${data.title}</h2>
-        <div class="modal-metrics-pill">${data.metrics}</div>
-      </div>
-
-      <div class="modal-section">
-        <h3>System Overview</h3>
-        <p>${data.overview}</p>
-      </div>
-
-      <div class="modal-section">
-        <h3>Architecture & Engineering Decisions</h3>
-        <ul class="modal-arch-list">
-          ${data.architecture.map((item) => `<li>${item}</li>`).join('')}
-        </ul>
-      </div>
-
-      <div class="modal-section">
-        <h3>Technologies Used</h3>
-        <div class="modal-tech-chips">
-          ${data.tech.map((t) => `<span class="tech-cyber-chip">${t}</span>`).join('')}
-        </div>
-      </div>
-
-      <div class="modal-actions-row">
-        <a href="${data.github}" target="_blank" rel="noopener" class="btn-cyber-primary">
-          <span>Inspect Source Code</span>
-          <svg width="16" height="16" viewBox="0 0 24 24" fill="currentColor"><path d="M12 2C6.477 2 2 6.484 2 12.017c0 4.425 2.865 8.18 6.839 9.504.5.092.682-.217.682-.483 0-.237-.008-.868-.013-1.703-2.782.605-3.369-1.343-3.369-1.343-.454-1.158-1.11-1.466-1.11-1.466-.908-.62.069-.608.069-.608 1.003.07 1.53 1.032 1.53 1.032.892 1.53 2.341 1.088 2.91.832.092-.647.35-1.088.636-1.338-2.22-.253-4.555-1.113-4.555-4.951 0-1.093.39-1.988 1.029-2.688-.103-.253-.446-1.272.098-2.65 0 0 .84-.27 2.75 1.026A9.564 9.564 0 0112 6.844c.85.004 1.705.115 2.504.337 1.909-1.296 2.747-1.027 2.747-1.027.546 1.379.202 2.398.1 2.651.64.7 1.028 1.595 1.028 2.688 0 3.848-2.339 4.695-4.566 4.943.359.309.678.92.678 1.855 0 1.338-.012 2.419-.012 2.747 0 .268.18.58.688.482A10.019 10.019 0 0022 12.017C22 6.484 17.522 2 12 2z"/></svg>
-        </a>
-      </div>
-    `;
+    if (modalFeaturesList && card.dataset.features) {
+      const feats = card.dataset.features.split('|');
+      modalFeaturesList.innerHTML = feats.map((f) => `<li>${f.trim()}</li>`).join('');
+    }
 
     modal.classList.add('active');
+    modal.setAttribute('aria-hidden', 'false');
     document.body.style.overflow = 'hidden';
   }
 
   function closeModal() {
     modal.classList.remove('active');
+    modal.setAttribute('aria-hidden', 'true');
     document.body.style.overflow = '';
   }
 
   cards.forEach((card) => {
     card.addEventListener('click', (e) => {
-      // If user clicked direct github anchor, let it pass
-      if (e.target.closest('a')) return;
-      const pid = card.dataset.project;
-      if (pid) openModal(pid);
+      // If user clicked direct external github link inside card actions, let it open
+      if (e.target.closest('.action-trigger-gh')) return;
+      openModalFromCard(card);
     });
   });
 
   if (closeBtn) closeBtn.addEventListener('click', closeModal);
+  if (closeBtnBottom) closeBtnBottom.addEventListener('click', closeModal);
 
   modal.addEventListener('click', (e) => {
     if (e.target === modal) closeModal();
@@ -1014,6 +915,7 @@ function initProjectModal() {
     }
   });
 }
+
 
 /* ==========================================================================
    15. CONTACT FORM
