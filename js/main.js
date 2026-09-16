@@ -517,7 +517,7 @@ function initInteractiveTerminal() {
         } else if (val === 'skills') {
           response = 'Full-Stack: Python, Java, JS, React, Next.js, FastAPI, Node.js, Docker, AWS, Postgres, ChromaDB';
         } else if (val === 'projects') {
-          response = 'Flagship: 1. FluxChat (Chat & Audio) 2. RentHub (Vehicle Platform) 3. Gemini RAG Studio 4. Personal Vault';
+          response = 'Flagship: 1. FluxChat (Chat & Audio) 2. RentHub (Vehicle Platform) 3. Gemini RAG Studio 4. Digital Vault';
         } else if (val === 'about') {
           response = 'Jyoti Swarup Parhi • B.Tech CSE @ GITA Autonomous College (CGPA: 8.6, Grad: 2027)';
         } else if (val === 'contact') {
@@ -982,6 +982,7 @@ function initProjectModal() {
   const modalDesc = document.getElementById('modalDesc');
   const modalFeaturesList = document.getElementById('modalFeaturesList');
   const modalGithubBtn = document.getElementById('modalGithubBtn');
+  const modalLiveBtn = document.getElementById('modalLiveBtn');
   const cards = document.querySelectorAll('.project-hologram-card');
 
   if (!modal) return;
@@ -994,6 +995,14 @@ function initProjectModal() {
     if (modalSubtitle && card.dataset.subtitle) modalSubtitle.textContent = card.dataset.subtitle;
     if (modalDesc && card.dataset.desc) modalDesc.textContent = card.dataset.desc;
     if (modalGithubBtn && card.dataset.github) modalGithubBtn.href = card.dataset.github;
+    if (modalLiveBtn) {
+      if (card.dataset.live) {
+        modalLiveBtn.href = card.dataset.live;
+        modalLiveBtn.style.display = 'inline-flex';
+      } else {
+        modalLiveBtn.style.display = 'none';
+      }
+    }
 
     if (modalFeaturesList && card.dataset.features) {
       const feats = card.dataset.features.split('|');
@@ -1013,8 +1022,8 @@ function initProjectModal() {
 
   cards.forEach((card) => {
     card.addEventListener('click', (e) => {
-      // If user clicked direct external github link inside card actions, let it open
-      if (e.target.closest('.action-trigger-gh')) return;
+      // If user clicked direct external live link or github link inside card actions, let it open
+      if (e.target.closest('.action-trigger-gh') || e.target.closest('.action-trigger-live')) return;
       openModalFromCard(card);
     });
   });
@@ -1116,7 +1125,7 @@ function initContactForm() {
       if (response.status === 200 && result.success) {
         const safeName = name.replace(/[<>&"']/g, '');
         if (alertBox) {
-          alertBox.innerHTML = `&check; TRANSMISSION DISPATCHED // Thank you <strong>${safeName}</strong>, your message has been transmitted directly to Jyoti's primary inbox!`;
+          alertBox.innerHTML = `&check; TRANSMISSION DISPATCHED // Thank you <strong>${safeName}</strong>, your message has been transmitted directly to Jitu's primary inbox!`;
           alertBox.className = 'contact-form-alert success';
           alertBox.style.display = 'block';
         }
@@ -1150,6 +1159,7 @@ function initContactForm() {
    16. RESUME DOWNLOAD HANDLERS
    ========================================================================== */
 function initResumeButtons() {
+  const resumeUrl = 'assets/Jyoti_Swarup_Parhi_Resume.pdf';
   const resumeButtons = [
     document.getElementById('navResumeBtn'),
     document.getElementById('heroResumeBtn'),
@@ -1157,14 +1167,13 @@ function initResumeButtons() {
   ].filter(Boolean);
 
   resumeButtons.forEach((btn) => {
-    btn.addEventListener('click', (e) => {
-      // If href is #contact, smooth scroll there
-      if (btn.getAttribute('href') === '#contact') {
-        e.preventDefault();
-        const contactSec = document.getElementById('contact');
-        if (contactSec) {
-          contactSec.scrollIntoView({ behavior: 'smooth' });
-        }
+    btn.setAttribute('href', resumeUrl);
+    btn.setAttribute('target', '_blank');
+    btn.setAttribute('rel', 'noopener noreferrer');
+
+    btn.addEventListener('click', () => {
+      if (typeof showToast === 'function') {
+        showToast('ACCESSING DOSSIER // Opening Resume PDF in new viewer');
       }
     });
   });
