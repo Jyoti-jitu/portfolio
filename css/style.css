@@ -3377,4 +3377,66 @@ img {
   }
 }
 
+/* ==========================================================================
+   Chatbase AI Widget — Compact & Perfect Sizing
+   ========================================================================== */
+#chatbase-bubble-window {
+  width: 370px !important;
+  max-width: calc(100vw - 32px) !important;
+  height: 530px !important;
+  max-height: calc(100dvh - 110px) !important;
+  bottom: 84px !important;
+  right: 1.25rem !important;
+  border-radius: 18px !important;
+  box-shadow: 0 16px 40px -8px rgba(0, 0, 0, 0.65), 0 0 0 1px rgba(255, 255, 255, 0.08), 0 0 24px rgba(0, 240, 255, 0.1) !important;
+  overflow: hidden !important;
+  transition: width 0.25s var(--ease), height 0.25s var(--ease), transform 0.25s var(--ease) !important;
+}
+
+#chatbase-bubble-window iframe {
+  width: 100% !important;
+  height: 100% !important;
+  border-radius: 18px !important;
+}
+
+#chatbase-bubble-button {
+  bottom: 20px !important;
+  right: 1.25rem !important;
+  box-shadow: 0 8px 24px rgba(0, 0, 0, 0.4), 0 0 16px rgba(0, 240, 255, 0.25) !important;
+  transition: transform 0.25s var(--spring), box-shadow 0.25s var(--ease) !important;
+}
+
+#chatbase-bubble-button:hover {
+  transform: scale(1.06) translateY(-2px) !important;
+  box-shadow: 0 12px 30px rgba(0, 0, 0, 0.5), 0 0 25px rgba(0, 240, 255, 0.45) !important;
+}
+
+#chatbase-message-bubbles {
+  bottom: 84px !important;
+  right: 1.25rem !important;
+}
+
+@media (max-width: 640px) {
+  #chatbase-bubble-window {
+    width: calc(100vw - 24px) !important;
+    max-width: 400px !important;
+    height: min(540px, calc(100dvh - 90px)) !important;
+    bottom: 76px !important;
+    right: 12px !important;
+    left: auto !important;
+    border-radius: 16px !important;
+  }
+
+  #chatbase-bubble-button {
+    bottom: 16px !important;
+    right: 12px !important;
+  }
+
+  #chatbase-message-bubbles {
+    bottom: 76px !important;
+    right: 12px !important;
+  }
+}
+
+
 
