@@ -517,7 +517,7 @@ function initInteractiveTerminal() {
         } else if (val === 'skills') {
           response = 'Full-Stack: Python, Java, JS, React, Next.js, FastAPI, Node.js, Docker, AWS, Postgres, ChromaDB';
         } else if (val === 'projects') {
-          response = 'Flagship: 1. FluxChat (Chat & Audio) 2. RentHub (Vehicle Platform) 3. Gemini RAG Studio 4. Digital Vault';
+          response = 'Flagship: 1. FluxChat (Live) 2. RentHub (Upcoming) 3. Gemini RAG Studio 4. Digital Vault';
         } else if (val === 'about') {
           response = 'Jyoti Swarup Parhi • B.Tech CSE @ GITA Autonomous College (CGPA: 8.6, Grad: 2027)';
         } else if (val === 'contact') {
@@ -983,6 +983,7 @@ function initProjectModal() {
   const modalFeaturesList = document.getElementById('modalFeaturesList');
   const modalGithubBtn = document.getElementById('modalGithubBtn');
   const modalLiveBtn = document.getElementById('modalLiveBtn');
+  const modalUpcomingBadge = document.getElementById('modalUpcomingBadge');
   const cards = document.querySelectorAll('.project-hologram-card');
 
   if (!modal) return;
@@ -994,13 +995,27 @@ function initProjectModal() {
     if (modalTitle && card.dataset.title) modalTitle.textContent = card.dataset.title;
     if (modalSubtitle && card.dataset.subtitle) modalSubtitle.textContent = card.dataset.subtitle;
     if (modalDesc && card.dataset.desc) modalDesc.textContent = card.dataset.desc;
-    if (modalGithubBtn && card.dataset.github) modalGithubBtn.href = card.dataset.github;
+    if (modalGithubBtn) {
+      if (card.dataset.github) {
+        modalGithubBtn.href = card.dataset.github;
+        modalGithubBtn.style.display = 'inline-flex';
+      } else {
+        modalGithubBtn.style.display = 'none';
+      }
+    }
     if (modalLiveBtn) {
       if (card.dataset.live) {
         modalLiveBtn.href = card.dataset.live;
         modalLiveBtn.style.display = 'inline-flex';
       } else {
         modalLiveBtn.style.display = 'none';
+      }
+    }
+    if (modalUpcomingBadge) {
+      if (!card.dataset.live && !card.dataset.github) {
+        modalUpcomingBadge.style.display = 'inline-flex';
+      } else {
+        modalUpcomingBadge.style.display = 'none';
       }
     }
 

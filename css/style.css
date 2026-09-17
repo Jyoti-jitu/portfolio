@@ -1543,6 +1543,13 @@ img {
   z-index: 2;
 }
 
+.project-live-indicator.indicator-upcoming {
+  background: rgba(245, 158, 11, 0.18);
+  border-color: rgba(245, 158, 11, 0.5);
+  color: #fbbf24;
+  box-shadow: 0 0 12px rgba(245, 158, 11, 0.2);
+}
+
 .live-dot-pulse {
   width: 7px;
   height: 7px;
@@ -1550,6 +1557,12 @@ img {
   background: #00ff9d;
   box-shadow: 0 0 8px #00ff9d;
   animation: blink-pulse 1.8s infinite;
+}
+
+.live-dot-pulse.dot-amber,
+.live-pulse-dot.dot-amber {
+  background: #f59e0b;
+  box-shadow: 0 0 8px #f59e0b;
 }
 
 .project-info-body {
@@ -1674,6 +1687,35 @@ img {
   border-radius: 50%;
   box-shadow: 0 0 6px #00ff9d;
   animation: pulseNode 2s infinite ease-in-out;
+}
+
+.action-trigger-upcoming {
+  font-size: 0.82rem;
+  font-weight: 700;
+  color: #fbbf24;
+  display: inline-flex;
+  align-items: center;
+  gap: 0.45rem;
+  padding: 0.28rem 0.75rem;
+  background: rgba(245, 158, 11, 0.1);
+  border: 1px solid rgba(245, 158, 11, 0.3);
+  border-radius: 9999px;
+  letter-spacing: 0.03em;
+}
+
+.modal-upcoming-pill {
+  display: inline-flex;
+  align-items: center;
+  gap: 0.5rem;
+  font-size: 0.84rem;
+  font-weight: 700;
+  color: #fbbf24;
+  background: rgba(245, 158, 11, 0.12);
+  border: 1px solid rgba(245, 158, 11, 0.35);
+  padding: 0.45rem 1rem;
+  border-radius: 9999px;
+  font-family: var(--font-mono);
+  letter-spacing: 0.03em;
 }
 
 /* --------------------------------------------------------------------------
